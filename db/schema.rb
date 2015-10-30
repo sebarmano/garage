@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029205128) do
+ActiveRecord::Schema.define(version: 20151030150635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "starts_at",  null: false
+    t.datetime "ends_at"
+    t.integer  "car_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "appointments", ["car_id"], name: "index_appointments_on_car_id", using: :btree
+
+  create_table "cars", force: :cascade do |t|
+    t.string   "brand",      null: false
+    t.string   "model",      null: false
+    t.string   "color"
+    t.integer  "year"
+    t.string   "license"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cars", ["user_id"], name: "index_cars_on_user_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -31,6 +54,23 @@ ActiveRecord::Schema.define(version: 20151029205128) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "job_types", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "job_type_id"
+    t.integer  "appointment_id"
+    t.integer  "status",         default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "jobs", ["appointment_id"], name: "index_jobs_on_appointment_id", using: :btree
+  add_index "jobs", ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "fname",                               null: false
@@ -60,4 +100,8 @@ ActiveRecord::Schema.define(version: 20151029205128) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "appointments", "cars"
+  add_foreign_key "cars", "users"
+  add_foreign_key "jobs", "appointments"
+  add_foreign_key "jobs", "job_types"
 end

@@ -1,13 +1,18 @@
-FactoryGirl.define do  factory :job do
-    type nil
-appointment nil
-status 1
+FactoryGirl.define do
+  factory :job_type do
+    name "MyString"
   end
+
+  factory :job do
+    type nil
+    appointment nil
+    status 1
+  end
+
   factory :appointment do
     starts_at "2015-10-30 10:29:19"
-ends_at "2015-10-30 10:29:19"
-car nil
-job nil
+    ends_at "2015-10-30 10:29:19"
+    car nil
   end
 
   factory :car do
@@ -20,7 +25,5 @@ job nil
   end
 
   factory :user do
-
   end
-
 end
