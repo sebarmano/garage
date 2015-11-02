@@ -10,9 +10,9 @@ FactoryGirl.define do
   end
 
   factory :appointment do
-    starts_at "2015-10-30 10:29:19"
-    ends_at "2015-10-30 10:29:19"
-    car nil
+    starts_at DateTime.current + 1.week
+    ends_at DateTime.current + 1.week + 2.hours
+    car
   end
 
   factory :car do
@@ -21,9 +21,14 @@ FactoryGirl.define do
     color "Color"
     license "AAA000"
     year 1
-    user nil
+    user
   end
 
   factory :user do
+    fname "fname"
+    lname "lname"
+    email "email@email.com"
+    password "password"
+    phone "999-999-9999"
   end
 end
