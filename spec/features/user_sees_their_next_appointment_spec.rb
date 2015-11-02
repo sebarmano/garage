@@ -9,4 +9,10 @@ feature "user sees their next appointment" do
 
     expect(page).to have_text(appointment.starts_at)
   end
+
+  scenario "without next appointments" do
+    visit dashboard_path
+
+    expect(page).to have_text("No tiene próximos turnos")
+  end
 end

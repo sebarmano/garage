@@ -2,7 +2,11 @@
 <p>Find me in app/views/dashboards/show.html.erb</p>
 
 <p>
-  <% @appointments.each do |appointment| %>
-    <%= appointment.starts_at %>
+  <% if @appointments.any?  %>
+    <% @appointments.each do |appointment| %>
+      <%= appointment.starts_at %>
+    <% end %>
+  <% else %>
+    No tiene próximos turnos
   <% end %>
 </p>
