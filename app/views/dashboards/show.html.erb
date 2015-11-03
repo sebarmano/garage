@@ -1,2 +1,12 @@
 <h1>Dashboards#show</h1>
 <p>Find me in app/views/dashboards/show.html.erb</p>
+
+<p>
+  <% if @appointments.any?  %>
+    <% @appointments.each do |appointment| %>
+      <%= appointment.starts_at %>
+    <% end %>
+  <% else %>
+    No tiene próximos turnos
+  <% end %>
+</p>
