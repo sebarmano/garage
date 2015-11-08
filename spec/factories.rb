@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :job_type do
-    name "MyString"
+    name "job_type"
   end
 
   factory :job do
@@ -30,5 +30,11 @@ FactoryGirl.define do
     email "email@email.com"
     password "password"
     phone "999-999-9999"
+
+    trait :confirmed do
+      confirmed_at {Time.current}
+    end
+
+    factory :confirmed_user, traits: [:confirmed]
   end
 end
