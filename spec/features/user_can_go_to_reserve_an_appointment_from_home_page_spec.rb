@@ -6,7 +6,7 @@ feature "user can reserve an appointment from home page" do
 
     expect(page).to have_link("Solicitar un turno")
   end
-  
+
   scenario "without being logged in" do
     visit root_path
     click_link("Solicitar un turno")

@@ -32,7 +32,7 @@ FactoryGirl.define do
     phone "999-999-9999"
 
     trait :confirmed do
-      confirmed_at {Time.current}
+      confirmed_at { Time.current }
     end
 
     factory :confirmed_user, traits: [:confirmed]

@@ -6,3 +6,14 @@
 @import "neat";
 @import "base/base";
 @import "refills/flashes";
+@import "refills/flexboxes";
+
+.days-container {
+  @include outer-container;
+}
+
+.days {
+  flex-wrap: nowrap;
+  background-color: red;
+}
+

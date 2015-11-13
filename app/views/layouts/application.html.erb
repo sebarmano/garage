@@ -14,6 +14,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+  <%= link_to "Ingresar", new_user_session_path %>
   <%= render "flashes" -%>
   <%= yield %>
   <%= render "javascript" %>
