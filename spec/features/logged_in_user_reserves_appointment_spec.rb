@@ -15,10 +15,12 @@ feature "logged in user reserves appointment" do
     click_on "Solicitar turno"
 
     expect(current_path).to eq(dashboard_path)
-    expect_to_see_success_appointment_message
+    expect_to_see_successful_appointment_message
   end
 
-  def expect_to_see_success_appointment_message
+  private
+
+  def expect_to_see_successful_appointment_message
     expect(page).to have_css("div.flash-notice", text: "El turno ha sido solicitado. Recibirá un correo electrónico cuando sea confirmado")
   end
 end

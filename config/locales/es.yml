@@ -1,10 +1,10 @@
-en:
+es:
   date:
     formats:
       default:
-        "%d/%m/%Y"
+        "%m/%d/%Y"
       with_weekday:
-        "%a %d/%m/%y"
+        "%a %m/%d/%y"
 
   time:
     formats:
@@ -19,6 +19,6 @@ en:
     application: Garage
 
   navbar:
-    login: "Login"
-    sign_out: "Sign Out"
+    login: "Ingresar"
+    sign_out: "Cerrar sesión"
 

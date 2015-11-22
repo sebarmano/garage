@@ -11,6 +11,9 @@ Bundler.require(*Rails.groups)
 module Garage
   class Application < Rails::Application
     config.i18n.enforce_available_locales = true
+    config.i18n.available_locales = [:en, :es]
+    config.i18n.default_locale = :es
+    config.time_zone = "Buenos Aires"
     config.quiet_assets = true
     config.generators do |generate|
       generate.helper false

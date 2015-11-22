@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
       redirect_to dashboard_path, flash:
-        {notice: "El turno ha sido solicitado. Recibirá un correo electrónico cuando sea confirmado"}
+        {success: "El turno ha sido solicitado. Recibirá un correo electrónico cuando sea confirmado"}
     end
   end
 
