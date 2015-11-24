@@ -1,9 +1,9 @@
 require "rails_helper"
 
 feature "user registers" do
-  context "after completing personal successfully data is redirected to car form" do
+  scenario "after completing personal successfully data is redirected to car form" do
     visit root_path
-    click_on "Ingresar"
+    click_on t("navbar.login")
 
     expect(current_path).to eq(new_session_path)
 
@@ -24,7 +24,7 @@ feature "user registers" do
   end
 
   private
-  
+
   def expect_to_see_successfull_registration_message
     expect(page).to have_css('div.flash-notice', text: "Bienvenido a Garage, Juan!")
   end

@@ -28,6 +28,7 @@ RSpec.configure do |config|
   config.after :each do
     Warden.test_reset!
   end
+  config.include AbstractController::Translation
 end
 
 ActiveRecord::Migration.maintain_test_schema!
