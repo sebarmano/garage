@@ -1,4 +1,4 @@
-en:
+es:
   simple_form:
     "yes": 'Si'
     "no": 'No'
@@ -11,14 +11,24 @@ en:
     error_notification:
       default_message: "Por favor revise los siguentes problemas:"
     # Examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+    labels:
+      defaults:
+        password: 'Contraseña'
+      user:
+        fname: "Nombre"
+        lname: "Apellido"
+        phone: "Teléfono de contacto"
+        password_confirmation: "Repita la contraseña"
+        new:
+          email: 'E-mail para registrarse'
+        edit:
+          email: 'E-mail.'
+      appointment:
+        date_on: "Seleccione una fecha"
+        starts_at: "Seleccione un horario"
+        car: "Seleccione el vehículo"
+
+
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

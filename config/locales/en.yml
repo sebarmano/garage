@@ -20,5 +20,5 @@ en:
 
   navbar:
     login: "Login"
-    sign_out: "Sign Out"
+    logout: "Sign Out"
 

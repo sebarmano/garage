@@ -1,10 +1,10 @@
 <h1>Reserva de Turnos</h1>
 <%= simple_form_for @appointment do |f| %>
-  <%= f.input :date_on, label: "Seleccione una fecha", as: :string %>
-  <%= f.input :starts_at, label: "Seleccione un horario", as: :string %>
-  <% unless current_user.cars.count == 1 %>
-    <%= f.input :car_id, label: "Vehículo" %>
+  <%= f.input :date_on, as: :string %>
+  <%= f.input :starts_at, as: :string %>
+  <% unless current_user.cars.count < 2 %>
+    <%= f.input :car, collection: current_user.cars, label_method: description %>
   <% end %>
-  <%= f.submit "Solicitar turno" %>
+  <%= f.button :submit%>
 <% end %>
 
