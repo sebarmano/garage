@@ -15,7 +15,7 @@ feature "user can reserve an appointment from home page" do
     # select(Time.now.hour, from: "Seleccione un horario")
 
     fill_in "Seleccione una fecha", with: Date.tomorrow
-    fill_in "Seleccione un horario", with: Time.now.hour
+    fill_in "Seleccione un horario", with: Time.zone.now.hour
     fill_in "Vehículo", with: car.id
 
     click_on "Reservar turno"
