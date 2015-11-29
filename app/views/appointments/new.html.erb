@@ -5,6 +5,6 @@
   <% unless current_user.cars.count < 2 %>
     <%= f.input :car, collection: current_user.cars, label_method: description %>
   <% end %>
-  <%= f.button :submit%>
+  <%= f.submit "Solicitar turno" %>
 <% end %>
 

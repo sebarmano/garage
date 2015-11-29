@@ -23,3 +23,7 @@ es:
     logout: "Cerrar sesión"
     schedule_appointment: "Solicitar turno"
 
+  models:
+    cars:
+      creation: "Ha registrado el vehiculo exitosamente."
+

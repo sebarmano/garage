@@ -14,19 +14,23 @@ es:
     labels:
       defaults:
         password: 'Contraseña'
+
       user:
         fname: "Nombre"
         lname: "Apellido"
         phone: "Teléfono de contacto"
         password_confirmation: "Repita la contraseña"
-        new:
-          email: 'E-mail para registrarse'
-        edit:
-          email: 'E-mail.'
+        email: 'Email'
+
       appointment:
         date_on: "Seleccione una fecha"
         starts_at: "Seleccione un horario"
         car: "Seleccione el vehículo"
+
+      car:
+        brand: "Marca"
+        model: "Modelo"
+        license: "Patente"
 
 
     # hints:
