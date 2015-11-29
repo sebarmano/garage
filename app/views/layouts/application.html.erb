@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-  <%#
-    Configure default and controller-, and view-specific titles in
+  <head>
+    <meta charset="utf-8" />
+    <meta name="ROBOTS" content="NOODP" />
+    <meta name="viewport" content="initial-scale=1" />
+    <%#
+        Configure default and controller-, and view-specific titles in
     config/locales/en.yml. For more see:
-    https://github.com/calebthompson/title#usage
-  %>
+      https://github.com/calebthompson/title#usage
+    %>
   <title><%= title %></title>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
-</head>
-<body class="<%= body_class %>">
-  <%= link_to "Ingresar", new_user_session_path %>
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
-</body>
+  </head>
+  <body class="<%= body_class %>">
+    <% if current_user %>
+      <%= "#{current_user.fname} #{current_user.lname}" %>
+      <%= link_to t("navbar.logout"), destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to t("navbar.login"), new_user_session_path %>
+    <% end %>
+    <%= link_to t("navbar.schedule_appointment"), new_appointment_path %>
+    <%= render "flashes" -%>
+    <%= yield %>
+    <%= render "javascript" %>
+  </body>
 </html>

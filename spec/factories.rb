@@ -10,8 +10,9 @@ FactoryGirl.define do
   end
 
   factory :appointment do
-    starts_at DateTime.current + 1.week
-    ends_at DateTime.current + 1.week + 2.hours
+    date_on Date.tomorrow
+    starts_at Time.now.strftime('%H:%M')
+    duration 2
     car
   end
 

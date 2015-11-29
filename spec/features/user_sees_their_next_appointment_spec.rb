@@ -5,6 +5,7 @@ feature "user sees their next appointment" do
     @user = create :confirmed_user
     login_as(@user, scope: :user)
   end
+
   scenario "with one next appointment" do
     car = create :car, user: @user
     @appointment = create :appointment, car: car
