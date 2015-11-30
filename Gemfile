@@ -24,6 +24,7 @@ gem "simple_form"
 gem "title"
 gem "uglifier"
 gem "devise"
+gem "pickadate-rails"
 
 group :development do
   gem "quiet_assets"

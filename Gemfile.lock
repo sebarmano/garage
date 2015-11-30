@@ -152,6 +152,8 @@ GEM
     normalize-rails (3.0.3)
     orm_adapter (0.5.0)
     pg (0.18.3)
+    pickadate-rails (3.5.6.0)
+      railties (>= 3.1.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -302,6 +304,7 @@ DEPENDENCIES
   newrelic_rpm (>= 3.9.8)
   normalize-rails (~> 3.0.0)
   pg
+  pickadate-rails
   pry-rails
   puma
   quiet_assets

@@ -7,13 +7,8 @@
 @import "base/base";
 @import "refills/flashes";
 @import "refills/flexboxes";
+@import "pickadate/classic";
+@import "pickadate/classic.date";
+@import "pickadate/classic.time";
 
-.days-container {
-  @include outer-container;
-}
-
-.days {
-  flex-wrap: nowrap;
-  background-color: red;
-}
 
