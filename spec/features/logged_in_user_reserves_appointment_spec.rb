@@ -3,10 +3,11 @@ require "rails_helper"
 feature "logged in user reserves appointment" do
   scenario "owning one car" do
     user = create(:user)
+    create(:car, user: user)
     login_as(user, as: :user)
     visit dashboard_path
 
-    click_on "Solicitar turno"
+    click_on "Solicitud de turnos"
     expect(current_path).to eq(new_appointment_path)
 
     fill_in "Seleccione una fecha", with: Date.tomorrow
@@ -21,8 +22,8 @@ feature "logged in user reserves appointment" do
 
   def expect_to_see_successful_appointment_message
     expect(page).to have_css("div.flash-success",
-                             text: "El turno ha sido solicitado.
-                             Recibirá un correo electrónico
-                             cuando sea confirmado")
+                             text: "El turno ha sido solicitado. "\
+                             "Recibirá un correo electrónico "\
+                             "cuando sea confirmado.")
   end
 end
