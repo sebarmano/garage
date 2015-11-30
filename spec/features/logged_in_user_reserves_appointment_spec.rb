@@ -10,7 +10,7 @@ feature "logged in user reserves appointment" do
     expect(current_path).to eq(new_appointment_path)
 
     fill_in "Seleccione una fecha", with: Date.tomorrow
-    fill_in "Seleccione un horario", with: Time.now.hour
+    fill_in "Seleccione un horario", with: Time.zone.now.hour
     click_button "Solicitar turno"
 
     expect(current_path).to eq(dashboard_path)
