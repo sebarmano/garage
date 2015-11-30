@@ -7,5 +7,4 @@ RSpec.describe Appointment, type: :model do
   it { is_expected.to validate_presence_of :starts_at }
   it { is_expected.to validate_presence_of :duration }
   it { is_expected.to validate_presence_of :car }
-
 end
