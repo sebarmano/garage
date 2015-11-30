@@ -21,7 +21,7 @@ es:
   navbar:
     login: "Ingresar"
     logout: "Cerrar sesión"
-    schedule_appointment: "Solicitar turno"
+    schedule_appointment: "Solicitud de turnos"
 
   models:
     cars:

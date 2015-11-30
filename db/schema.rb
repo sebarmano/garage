@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117011739) do
+ActiveRecord::Schema.define(version: 20151130205015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 20151117011739) do
     t.datetime "updated_at", null: false
     t.integer  "duration"
     t.time     "starts_at",  null: false
+    t.integer  "job_id"
   end
 
   add_index "appointments", ["car_id"], name: "index_appointments_on_car_id", using: :btree
+  add_index "appointments", ["job_id"], name: "index_appointments_on_job_id", using: :btree
 
   create_table "cars", force: :cascade do |t|
     t.string   "brand",      null: false
@@ -102,6 +104,7 @@ ActiveRecord::Schema.define(version: 20151117011739) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "appointments", "cars"
+  add_foreign_key "appointments", "jobs"
   add_foreign_key "cars", "users"
   add_foreign_key "jobs", "appointments"
   add_foreign_key "jobs", "job_types"
