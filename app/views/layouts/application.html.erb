@@ -21,8 +21,11 @@
       <%= link_to t("navbar.login"), new_user_session_path %>
     <% end %>
     <%= link_to t("navbar.schedule_appointment"), new_appointment_path %>
+    <%= render "layouts/navbar" %>
     <%= render "flashes" -%>
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
     <%= render "javascript" %>
   </body>
 </html>
