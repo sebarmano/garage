@@ -88,10 +88,15 @@
 
 .card-devise {
   margin-top: 20px;
-  @include span-columns(12 of 12);
+  @include span-columns(12);
+
+  @include media($medium-screen) {
+    @include span-columns(6);
+    @include shift(6);
+  }
 
   @include media($large-screen) {
-    @include span-columns(4 of 12);
+    @include span-columns(4);
     @include shift(8);
   }
 }
