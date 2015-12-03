@@ -10,9 +10,18 @@ $("#appointment_date_on").pickadate({
   close: "Cerrar",
 
   onSet: function(context) {
-    console.log('Just set stuff:', context)
+    var dateSelected = this.get()
+    $.getJSON("/available_hours", {date: dateSelected}, function(data) {
+     console.log(data) 
+    }); 
   }
 });
 
 $("#appointment_starts_at").pickatime();
 
+
+// getJson in onSet of the available hours or disabled hours. 
+// generate an object to cantain available hours and a route that responds to
+// json in index
+// use that json to populate the array of the pickatime()
+// hide text and unhide pickatime
