@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: :show
   resources :appointments, only: [:new, :create]
   resources :cars, only: [:new, :create]
+  resources :available_hours, only: :index, format: :json
 
   devise_for :users, controllers: { registrations: "registrations" }
 end
