@@ -14,15 +14,11 @@
   <%= csrf_meta_tags %>
   </head>
   <body class="<%= body_class %>">
-    <% if current_user %>
-      <%= "#{current_user.fname} #{current_user.lname}" %>
-      <%= link_to t("navbar.logout"), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to t("navbar.login"), new_user_session_path %>
-    <% end %>
-    <%= link_to t("navbar.schedule_appointment"), new_appointment_path %>
+    <%= render "layouts/navbar" %>
     <%= render "flashes" -%>
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
     <%= render "javascript" %>
   </body>
 </html>
