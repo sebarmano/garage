@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151130205015) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
+    console.log 'debugging'
     t.date     "date_on",    null: false
     t.integer  "car_id"
     t.datetime "created_at", null: false
