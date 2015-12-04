@@ -21,4 +21,9 @@ en:
   navbar:
     login: "Login"
     logout: "Sign Out"
+    schedule_appointment: "Schedule appointment"
+
+  models:
+    cars:
+      creation: "Your car has been registered successfully"
 
