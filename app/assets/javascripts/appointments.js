@@ -12,10 +12,9 @@ $("#appointment_date_on").pickadate({
   onSet: function(context) {
     var dateSelected = this.get()
       $.getJSON("/available_hours", {date: dateSelected}, function(data) {
-        console.log(data)
           $("#appointment_starts_at")
-          .prop('disabled', false)
-          .prop('placeholder',"");
+          .prop("disabled", false)
+          .prop("placeholder","");
         $("#appointment_starts_at").pickatime({
           disable: data,
           interval: 120,
