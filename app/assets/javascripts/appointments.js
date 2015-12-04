@@ -14,7 +14,8 @@ $("#appointment_date_on").pickadate({
       $.getJSON("/available_hours", {date: dateSelected}, function(data) {
           $("#appointment_starts_at")
           .prop("disabled", false)
-          .prop("placeholder","");
+          .prop("placeholder","")
+          .focus();
         $("#appointment_starts_at").pickatime({
           disable: data,
           interval: 120,

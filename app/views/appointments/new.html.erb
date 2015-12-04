@@ -1,6 +1,6 @@
 <h1>Reserva de Turnos</h1>
 <%= simple_form_for @appointment do |f| %>
-  <%= f.input :date_on, as: :string %>
+  <%= f.input :date_on, as: :string, autofocus: true %>
   <%= f.input :starts_at, as: :string, 
     disabled: true, 
     placeholder: "Primero seleccione una fecha" %>

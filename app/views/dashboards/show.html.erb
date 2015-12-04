@@ -2,9 +2,18 @@
 
 <p>
   <% if @appointments.any?  %>
+    <h2>Próximos turnos</h2>
+    <ul>
     <% @appointments.each do |appointment| %>
-      <%= appointment.starts_at %>
+      <li>
+        Fecha: 
+        <strong><%= appointment.date_on %></strong>
+        - Hora:
+        <strong> <%= appointment.starts_at %></strong>
+        - (Vehículo: <%= appointment.car.description %>)
+      </li>
     <% end %>
+    </ul>
   <% else %>
     No tiene próximos turnos
   <% end %>
