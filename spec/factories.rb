@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :appointment do
     date_on Date.tomorrow
-    starts_at Time.zone.now.strftime("%H:%M")
+    starts_at "10:00 AM"
     duration 2
     car
   end
@@ -33,7 +33,7 @@ FactoryGirl.define do
     phone "999-999-9999"
 
     trait :confirmed do
-      confirmed_at { Time.current }
+      confirmed_at { Time.zone.now }
     end
 
     factory :confirmed_user, traits: [:confirmed]

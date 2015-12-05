@@ -10,8 +10,9 @@ RSpec.describe Car, type: :model do
   it "provides a description" do
     car = create(:car,
                  brand: "fiat",
-                 model: "spazio")
+                 model: "spazio",
+                 license: "AAA111" )
 
-    expect(car.description).to eq("Fiat Spazio")
+    expect(car.description).to eq("Fiat Spazio AAA111")
   end
 end
