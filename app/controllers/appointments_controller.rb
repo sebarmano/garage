@@ -9,6 +9,7 @@ class AppointmentsController < ApplicationController
     @appointment.duration = appointment_duration
 
     if @appointment.save
+      AppointmentMailer.booked_appointment(current_user).deliver_later
       redirect_to dashboard_path, flash:
         { success: "El turno ha sido solicitado.
           Recibirá un correo electrónico cuando sea confirmado." }
