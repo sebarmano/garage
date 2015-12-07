@@ -1,6 +1,5 @@
 # Preview all emails at http://localhost:3000/rails/mailers/appointment_mailer
 class AppointmentMailerPreview < ActionMailer::Preview
-
   # Preview this email at http://localhost:3000/rails/mailers/appointment_mailer/booked_appointment
   def booked_appointment
     user = User.first
@@ -21,5 +20,4 @@ class AppointmentMailerPreview < ActionMailer::Preview
   def appointment_reminder
     AppointmentMailer.appointment_reminder
   end
-
 end
