@@ -27,8 +27,8 @@ RSpec.describe Appointment, type: :model do
 
   it "returns the already reserved hours on a date" do
     create(:appointment, date_on: Date.tomorrow,
-                                       starts_at: "10:00 AM",
-                                       duration: 2)
+                         starts_at: "10:00 AM",
+                         duration: 2)
 
     expect(Appointment.reserved_hours_on(Date.tomorrow)).to eq [10, 11]
   end
