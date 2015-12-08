@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151207230038) do
     t.integer  "duration"
     t.time     "starts_at",              null: false
     t.integer  "job_id"
-    t.integer  "status",     default: 0
+    t.integer  "status",     default: 0, null: false
   end
 
   add_index "appointments", ["car_id"], name: "index_appointments_on_car_id", using: :btree
