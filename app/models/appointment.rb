@@ -7,6 +7,8 @@ class Appointment < ActiveRecord::Base
   validates :duration, presence: true
   validates :starts_at, presence: true
 
+  enum status: [:booked, :confirmed, :cancelled, :done]
+
   def self.list_for(date)
     where(date_on: date)
   end
