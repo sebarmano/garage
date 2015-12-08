@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130205015) do
+ActiveRecord::Schema.define(version: 20151207230038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    console.log 'debugging'
-    t.date     "date_on",    null: false
+    t.date     "date_on",                null: false
     t.integer  "car_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "duration"
-    t.time     "starts_at",  null: false
+    t.time     "starts_at",              null: false
     t.integer  "job_id"
+    t.integer  "status",     default: 0, null: false
   end
 
   add_index "appointments", ["car_id"], name: "index_appointments_on_car_id", using: :btree

@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to have_many :cars }
+  it { is_expected.to have_many :appointments }
+  it { is_expected.to define_enum_for :role }
+
+  it "has role of customer by default when created" do
+    user = create(:user)
+
+    expect(user.customer?).to eq true
+  end
 end

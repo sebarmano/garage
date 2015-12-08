@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :cars
   has_many :appointments, through: :cars
+
+  enum role: [:customer, :admin]
 end
