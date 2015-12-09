@@ -24,6 +24,10 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def confirm
+
+  end
+
   private
 
   def appointment_params
