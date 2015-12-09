@@ -7,19 +7,18 @@
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if current_user %>
-          <li class="nav-link">
-            <%= "#{current_user.fname} #{current_user.lname}" %>
-            <%= link_to t("navbar.logout"), destroy_user_session_path, method: :delete %>
-          </li>
-        <li class="nav-link">
-          <%= link_to t("navbar.schedule_appointment"), new_appointment_path %>
-        </li>
+        <%= "#{current_user.fname} #{current_user.lname}" %>
+          <% if current_user.admin? %>
+            <%= render "layouts/admin_navbar_links" %>
+          <% else %>
+            <%= render "layouts/customer_navbar_links" %>
+          <% end %>
         <% else %>
           <li class="nav-link">
             <%= link_to t("navbar.login"), new_user_session_path %>
           </li>
         <li class="nav-link">
-          <%= link_to t("navbar.schedule_appointment"), new_user_session_path %>
+          <%= link_to t("navbar.schedule_appointment"), new_appointment_path %>
         </li>
         <% end %>
       </ul>

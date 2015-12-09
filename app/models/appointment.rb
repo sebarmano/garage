@@ -1,6 +1,7 @@
 class Appointment < ActiveRecord::Base
   belongs_to :car
   belongs_to :job
+  has_one :user, through: :car
 
   validates :car, presence: true
   validates :date_on, presence: true
@@ -25,5 +26,9 @@ class Appointment < ActiveRecord::Base
       busy_hours << Array(start_hour...end_hour)
     end
     busy_hours.flatten
+  end
+
+  def customer_name
+    user.name
   end
 end

@@ -1,4 +1,10 @@
 class AppointmentsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @appointments = Appointment.all
+  end
+
   def new
     @appointment = Appointment.new
   end

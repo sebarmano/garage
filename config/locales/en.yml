@@ -22,6 +22,7 @@ en:
     login: "Login"
     logout: "Sign Out"
     schedule_appointment: "Schedule appointment"
+    appointments: "Turnos"
 
   models:
     cars:

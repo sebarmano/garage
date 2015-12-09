@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Appointment, type: :model do
   it { is_expected.to belong_to :car }
   it { is_expected.to belong_to :job }
+  it { is_expected.to have_one :user }
   it { is_expected.to validate_presence_of :date_on }
   it { is_expected.to validate_presence_of :starts_at }
   it { is_expected.to validate_presence_of :duration }
@@ -39,5 +40,13 @@ RSpec.describe Appointment, type: :model do
                          duration: 2)
 
     expect(Appointment.reserved_hours_on(Date.tomorrow)).to eq [10, 11]
+  end
+
+  it "returns its customer name" do
+    user = create(:confirmed_user, fname: "John", lname: "Smith")
+    car = create(:car, user: user)
+    appointment = create(:appointment, car: car)
+
+    expect(appointment.customer_name).to eq("John Smith")
   end
 end
