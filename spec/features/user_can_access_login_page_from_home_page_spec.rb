@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "user can login from home page" do
+feature "user can access login page from home page" do
   context "without being logged in" do
     scenario "sees login button" do
       visit root_path
