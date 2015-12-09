@@ -49,5 +49,4 @@ RSpec.describe Appointment, type: :model do
 
     expect(appointment.customer_name).to eq("John Smith")
   end
-
 end

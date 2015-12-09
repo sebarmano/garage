@@ -29,15 +29,15 @@ feature "admin accesses list of all user appointments" do
 
   def expect_to_see_list_of_booked_appointments
     expect(page).to have_css("section.booked-appointments h2",
-                              text: "Turnos solicitados (esperando confirmación)")
+                            text: "Turnos solicitados (esperando confirmación)")
     expect(page).to have_css("section.booked-appointments ul li.appointment",
-                              text: @booked_appointment.date_on)
+                            text: @booked_appointment.date_on)
   end
 
   def expect_to_see_list_of_cancelled_appointments
     expect(page).to have_css("section.cancelled-appointments h2",
-                              text: "Turnos cancelados")
+                            text: "Turnos cancelados")
     expect(page).to have_css("section.cancelled-appointments ul li.appointment",
-                              text: @cancelled_appointment.date_on)
+                            text: @cancelled_appointment.date_on)
   end
 end

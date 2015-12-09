@@ -25,7 +25,7 @@ FactoryGirl.define do
     user
   end
 
-  factory :user, aliases: [:customer]  do
+  factory :user, aliases: [:customer] do
     fname "fname"
     lname "lname"
     email "email@email.com"
@@ -33,7 +33,7 @@ FactoryGirl.define do
     phone "999-999-9999"
 
     trait :confirmed do
-      confirmed_at  Time.zone.now
+      confirmed_at Time.zone.now
     end
 
     trait :admin do
