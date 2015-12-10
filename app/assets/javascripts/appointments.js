@@ -26,10 +26,25 @@ $("#appointment_date_on").pickadate({
   }
 });
 
+$("#select-all-button").click(function(e) {
+  var $checkboxes = $(".booked-appointments :checkbox");
+  e.preventDefault();
+  if ($(this).text() == "Seleccionar todos") {
+    $checkboxes.prop('checked', true);
+    $checkboxes.closest('tr').addClass('selected');
+    $(this).text("Deseleccionar todos");
+  } else {
+    $checkboxes.prop('checked', false);
+    $(this).text("Seleccionar todos");
+    $checkboxes.closest('tr').removeClass('selected');
+  }
+});
 
+$(".booked-appointments :checkbox").change(function () {
+  if( $(this).is(':checked') ) {
+    $(this).closest('tr').addClass('selected');
+  } else {
+    $(this).closest('tr').removeClass('selected');
+  }
+});
 
-// getJson in onSet of the available hours or disabled hours.
-// generate an object to cantain available hours and a route that responds to
-// json in index
-// use that json to populate the array of the pickatime()
-// hide text and unhide pickatime

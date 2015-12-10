@@ -17,6 +17,8 @@
   $table-hover-background: darken($table-background, 2);
   $table-stripe-background: darken($table-background, 4);
   $table-stripe-background-hover: darken($table-stripe-background, 5);
+  $row-selected-background: lightgreen;
+  $row-selected-hover-background: darken($row-selected-background, 5);
   $table-padding: .75em 1em;
 
   border-collapse: separate;
@@ -29,6 +31,14 @@
     }
     tr:first-child td {
       border-top: 2px solid $table-border-color;
+    }
+
+    tr.selected {
+      background-color: $row-selected-background;
+
+      &:hover > td {
+        background-color: $row-selected-hover-background;
+      }
     }
   }
 

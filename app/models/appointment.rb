@@ -37,4 +37,8 @@ class Appointment < ActiveRecord::Base
   def booked_since
     time_ago_in_words(created_at)
   end
+
+  def time
+    starts_at.strftime("%H:%M")
+  end
 end

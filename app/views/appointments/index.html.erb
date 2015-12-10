@@ -8,10 +8,10 @@
       <thead>
         <tr>
           <th>Fecha</th>
-          <th>Hora</th>
+          <th>Hora / Duración</th>
           <th>Cliente</th>
-          <th>Solicitud</th>
-          <th><button>Seleccionar todos</button></th>
+          <th>Tiempo desde solicitud</th>
+          <th><button id="select-all-button">Seleccionar todos</button></th>
         </tr>
       </thead>
         <tbody>
@@ -19,16 +19,19 @@
             <tr>
               <td><%= appointment.date_on %></td>
               <td>
-                <%= appointment.starts_at %> por
+                <%= appointment.time %> /
                 <%= appointment.duration %> horas
               </td>
               <td><%= appointment.customer_name %></td>
               <td><%= appointment.booked_since %></td>
               <td>
+                <label>
                 <%= check_box_tag "appointment_ids[]",
                   appointment.id,
                   false,
                   class: "checbox-button" %>
+                Confirmar turno
+                </label>
               </td>
             </tr>
           <% end %>
