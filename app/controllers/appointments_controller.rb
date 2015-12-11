@@ -2,7 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointments = Appointment.all
+    if current_user.admin? 
+      @appointments = Appointment.all
+    else
+      @appointments = current_user.appointments
+    end
   end
 
   def new

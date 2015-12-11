@@ -19,32 +19,32 @@ $("#appointment_date_on").pickadate({
         $("#appointment_starts_at").pickatime({
           disable: data,
           interval: 120,
-          min: [8, 0], 
+          min: [8, 0],
           max: [18, 0]
         });
       });
   }
 });
 
+var $checkboxes = $(".booked-appointments :checkbox");
+
 $("#select-all-button").click(function(e) {
-  var $checkboxes = $(".booked-appointments :checkbox");
   e.preventDefault();
-  if ($(this).text() == "Seleccionar todos") {
+  if ($(this).text() == "Marcar todos") {
     $checkboxes.prop('checked', true);
     $checkboxes.closest('tr').addClass('selected');
-    $(this).text("Deseleccionar todos");
+    $(this).text("Desmarcar todos");
   } else {
     $checkboxes.prop('checked', false);
-    $(this).text("Seleccionar todos");
+    $(this).text("Marcar todos");
     $checkboxes.closest('tr').removeClass('selected');
   }
 });
 
-$(".booked-appointments :checkbox").change(function () {
+$checkboxes.change(function () {
   if( $(this).is(':checked') ) {
     $(this).closest('tr').addClass('selected');
   } else {
-    $(this).closest('tr').removeClass('selected');
-  }
+    $(this).closest('tr').removeClass('selected'); }
 });
 

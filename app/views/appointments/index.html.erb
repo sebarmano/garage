@@ -4,16 +4,20 @@
   <section class="booked-appointments">
     <h2>Turnos solicitados (esperando confirmación)</h2>
     <%= form_tag confirm_appointments_path, method: :put do%>
-    <table class="table-minimal">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Hora / Duración</th>
-          <th>Cliente</th>
-          <th>Tiempo desde solicitud</th>
-          <th><button id="select-all-button">Seleccionar todos</button></th>
-        </tr>
-      </thead>
+      <table class="tables">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Hora / Duración</th>
+            <th>Cliente</th>
+            <th>Tiempo desde solicitud</th>
+            <%  if current_user.admin? %>
+              <th><a href="#" id="select-all-button">Marcar todos </th>
+            <% else %>
+              <th>Estado</th>
+            <% end %>
+          </tr>
+        </thead>
         <tbody>
           <% @appointments.booked.each do |appointment| %>
             <tr>
@@ -24,21 +28,27 @@
               </td>
               <td><%= appointment.customer_name %></td>
               <td><%= appointment.booked_since %></td>
-              <td>
-                <label>
-                <%= check_box_tag "appointment_ids[]",
-                  appointment.id,
-                  false,
-                  class: "checbox-button" %>
-                Confirmar turno
-                </label>
-              </td>
+              <% if current_user.admin? %>
+                <td>
+                  <label>
+                    <%= check_box_tag "appointment_ids[]",
+                      appointment.id,
+                      false,
+                      class: "checbox-button" %>
+                    Confirmar turno
+                  </label>
+                </td>
+              <% else %>
+                <td><%= appointment.status %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
-    </table>
-    <%= submit_tag "Salvar cambios" %>
-  <% end %>
+      </table>
+      <% if current_user.admin? %>
+        <%= submit_tag "Salvar cambios" %>
+      <% end %>
+    <% end %>
   </section>
 <% else %>
   <p>No se encontraron turnos.</p>

@@ -23,6 +23,7 @@ es:
     logout: Cerrar sesión
     schedule_appointment: Solicitud de turnos
     appointments: Turnos
+    dashboard: Panel de control
 
   models:
     cars:

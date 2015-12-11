@@ -1,7 +1,6 @@
-.table-minimal {
+.tables {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
-  $base-background-color: white !default;
   $base-line-height: 1.5em !default;
   $base-spacing: 1.5em !default;
   $action-color: #477DCA !default;
@@ -12,25 +11,33 @@
   $base-font-color: $dark-gray !default;
   $table-border-color: $base-border-color;
   $table-border: 1px solid $table-border-color;
-  $table-background: $base-background-color;
-  $table-header-background: lighten($table-background, 10);
-  $table-hover-background: darken($table-background, 2);
-  $table-stripe-background: darken($table-background, 4);
-  $table-stripe-background-hover: darken($table-stripe-background, 5);
+  $table-background: lighten($table-border-color, 12%);
+  $table-header-background: lighten($table-background, 10%);
+  $table-hover-background: darken($table-background, 5%);
+  $table-stripe-background: darken($table-background, 2%);
+  $table-stripe-background-hover: darken($table-stripe-background, 5%);
   $row-selected-background: $light-blue;
   $row-selected-hover-background: darken($row-selected-background, 5);
-  $table-padding: .75em 1em;
+  $table-padding: 0.75em 1em;
 
   border-collapse: separate;
+  border-left: 0px;
+  border-radius: $base-border-radius;
   border-spacing: 0;
+  border: $table-border;
   width: 100%;
 
   tbody {
+    background-color: $table-background;
+
     tr:hover > td, tr:hover > th {
       background-color: $table-hover-background;
     }
-    tr:first-child td {
-      border-top: 2px solid $table-border-color;
+    tr:nth-child(even) {
+      background-color: $table-stripe-background;
+      &:hover > td {
+        background-color: $table-stripe-background-hover;
+      }
     }
 
     tr.selected {
@@ -42,12 +49,37 @@
     }
   }
 
+  thead:first-of-type {
+    tr:first-child > th:first-child {
+      border-top-left-radius: $base-border-radius;
+    }
+
+    tr:first-child > th:last-child {
+      border-top-right-radius: $base-border-radius;
+    }
+  }
+
+  tbody:last-child {
+    tr:last-child > td:first-child {
+      border-bottom-left-radius: $base-border-radius;
+    }
+
+    tr:last-child > td:last-child {
+      border-bottom-right-radius: $base-border-radius;
+    }
+  }
+
   thead {
     th {
       background-color: $table-header-background;
       border-bottom: 0px;
+      border-left: 1px solid $table-border-color;
       padding: $table-padding;
       text-align: left;
+
+      &:first-child {
+        border-left: none;
+      }
     }
   }
 
@@ -56,18 +88,22 @@
 
     td {
       border-bottom: 0px;
+      border-left: 1px solid $table-border-color;
       border-top: 1px solid $table-border-color;
-      line-height: $base-line-height;
       padding: $table-padding;
+
+      &:first-child {
+        border-left: none;
+      }
 
       button {
         display: inline-block;
-        font-size: .7em;
+        font-size: 0.7em;
         line-height: $base-line-height;
-        margin-bottom: .3em;
+        margin-bottom: 0.3em;
         margin-right: 0.5em;
         outline: none;
-        padding: .3em 1em;
+        padding: 0.3em 1em;
         width: 100%;
 
         @include media($medium-screen) {
@@ -78,3 +114,4 @@
     }
   }
 }
+
