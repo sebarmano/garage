@@ -30,7 +30,7 @@
       background-color: $table-hover-background;
     }
     tr:first-child td {
-      border-top: 2px solid $table-border-color;
+      border-top: 3px solid $table-border-color;
     }
 
     tr.selected {
@@ -48,6 +48,10 @@
       border-bottom: 0px;
       padding: $table-padding;
       text-align: left;
+      color: gray;
+      font-size: 0.9em;
+      font-style: normal;
+      font-weight: 400;
     }
   }
 

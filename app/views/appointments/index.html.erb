@@ -1,54 +1,41 @@
-<h1>Lista de turnos</h1>
-
 <% if @appointments.any? %>
   <section class="booked-appointments">
-    <h2>Turnos solicitados (esperando confirmación)</h2>
-    <%= form_tag confirm_appointments_path, method: :put do%>
-      <table class="tables">
-        <thead>
+    <h1>Turnos solicitados</h1>
+    <table class="table-minimal">
+      <thead>
+        <tr>
+          <th class="date">Fecha</th>
+          <th>Hora / Duración</th>
+          <th>Cliente</th>
+          <th>Tiempo desde solicitud</th>
+          <th><a href="#" id="select-all-button">Marcar todos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @appointments.booked.each do |appointment| %>
           <tr>
-            <th>Fecha</th>
-            <th>Hora / Duración</th>
-            <th>Cliente</th>
-            <th>Tiempo desde solicitud</th>
-            <%  if current_user.admin? %>
-              <th><a href="#" id="select-all-button">Marcar todos </th>
-            <% else %>
-              <th>Estado</th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <% @appointments.booked.each do |appointment| %>
-            <tr>
-              <td><%= appointment.date_on %></td>
-              <td>
-                <%= appointment.time %> /
-                <%= appointment.duration %> horas
-              </td>
-              <td><%= appointment.customer_name %></td>
-              <td><%= appointment.booked_since %></td>
-              <% if current_user.admin? %>
-                <td>
-                  <label>
-                    <%= check_box_tag "appointment_ids[]",
-                      appointment.id,
-                      false,
-                      class: "checbox-button" %>
-                    Confirmar turno
-                  </label>
-                </td>
-              <% else %>
-                <td><%= appointment.status %></td>
+            <td class="date"><%= appointment.date_on %></td>
+            <td>
+              <%= appointment.time %> /
+              <%= appointment.duration %> horas
+            </td>
+            <td><%= appointment.customer_name %></td>
+            <td><%= appointment.booked_since %></td>
+            <td>
+              <%= form_tag confirm_appointments_path, method: :put do%>
+                <label>
+                  <%= check_box_tag "appointment_ids[]",
+                    appointment.id,
+                    false,
+                    class: "checbox-button" %>
+                </label>
               <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% if current_user.admin? %>
-        <%= submit_tag "Salvar cambios" %>
-      <% end %>
-    <% end %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <%= submit_tag "Confirmar marcados" %>
+  <% end %>
   </section>
 <% else %>
   <p>No se encontraron turnos.</p>
