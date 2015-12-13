@@ -19,17 +19,32 @@ $("#appointment_date_on").pickadate({
         $("#appointment_starts_at").pickatime({
           disable: data,
           interval: 120,
-          min: [8, 0], 
+          min: [8, 0],
           max: [18, 0]
         });
       });
   }
 });
 
+var $checkboxes = $(".booked-appointments :checkbox");
 
+$("#select-all-button").click(function(e) {
+  e.preventDefault();
+  if ($(this).text() == "Marcar todos") {
+    $checkboxes.prop('checked', true);
+    $checkboxes.closest('tr').addClass('selected');
+    $(this).text("Desmarcar todos");
+  } else {
+    $checkboxes.prop('checked', false);
+    $(this).text("Marcar todos");
+    $checkboxes.closest('tr').removeClass('selected');
+  }
+});
 
-// getJson in onSet of the available hours or disabled hours.
-// generate an object to cantain available hours and a route that responds to
-// json in index
-// use that json to populate the array of the pickatime()
-// hide text and unhide pickatime
+$checkboxes.change(function () {
+  if( $(this).is(':checked') ) {
+    $(this).closest('tr').addClass('selected');
+  } else {
+    $(this).closest('tr').removeClass('selected'); }
+});
+

@@ -1,3 +1,5 @@
+include ActionView::Helpers::DateHelper
+
 class Appointment < ActiveRecord::Base
   belongs_to :car
   belongs_to :job
@@ -30,5 +32,13 @@ class Appointment < ActiveRecord::Base
 
   def customer_name
     user.name
+  end
+
+  def booked_since
+    time_ago_in_words(created_at)
+  end
+
+  def time
+    starts_at.strftime("%H:%M")
   end
 end
