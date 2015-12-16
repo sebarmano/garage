@@ -6,6 +6,6 @@ class Car < ActiveRecord::Base
   validates :license, presence: true
 
   def description
-    "#{brand.capitalize} #{model.capitalize} #{license.upcase}"
+    "#{brand.capitalize} #{model.capitalize} (#{license.upcase})"
   end
 end

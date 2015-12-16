@@ -1,0 +1,16 @@
+#new_appointment {
+  @include row();
+}
+
+.new_appointment .input {
+  @include span-columns(4);
+
+  &.appointment_car {
+    @include omega;
+  }
+}
+
+input[type="submit"] {
+  @include span-columns(4);
+  @include shift(4);
+}

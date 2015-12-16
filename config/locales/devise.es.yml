@@ -13,6 +13,16 @@ es:
     confirmations:
       new:
         resend_confirmation_instructions: Reenviar instrucciones de confirmación
+    failure:
+      already_authenticated: Usted ya ha ingresado.
+      inactive: Su cuenta no se encuentra activada aún.
+      invalid: "%{authentication_keys} o contraseña inválidos."
+      locked: Su cuenta se encuentra bloqueada.
+      last_attempt: Tiene un intento más antes de que se bloquee su cuenta.
+      not_found_in_database: "%{authentication_keys} o contraseña inválidos."
+      timeout: Ha expirado la sesión. Por favor vuelva a ingresar.
+      unauthenticated: Necesita ingresar o registrarse para continuar.
+      unconfirmed: Debe confirmar su cuenta de correo electrónico para continuar.
     mailer:
       confirmation_instructions:
         action: Confirmar mi cuenta
@@ -53,6 +63,8 @@ es:
     sessions:
       new:
         sign_in: Iniciar sesión
+      user:
+        signed_in: Bienvenido nuevamente!
     shared:
       links:
         back: Atrás

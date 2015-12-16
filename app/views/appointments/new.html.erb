@@ -4,9 +4,8 @@
   <%= f.input :starts_at, as: :string,
     disabled: true,
     placeholder: "Primero seleccione una fecha" %>
-  <% unless current_user.cars.count < 2 %>
-    <%= f.input :car, collection: current_user.cars, label_method: description %>
-  <% end %>
+  <%= f.input  :car, collection: current_user.cars.map(&:description), prompt: "Seleccione el vehículo", selected: current_user.cars.first %>
+
   <%= f.submit "Solicitar turno" %>
 <% end %>
 
