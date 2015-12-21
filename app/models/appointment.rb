@@ -2,7 +2,7 @@ include ActionView::Helpers::DateHelper
 
 class Appointment < ActiveRecord::Base
   belongs_to :car
-  belongs_to :job
+  has_many :job_types
   has_one :user, through: :car
 
   validates :car, presence: true

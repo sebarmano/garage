@@ -9,6 +9,8 @@ es:
         remember_me: Recordarme
     models:
       user: Usuario
+      car: Vehículo
+      job_type: Trabajo
   devise:
     confirmations:
       new:

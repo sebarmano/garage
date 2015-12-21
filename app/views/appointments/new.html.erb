@@ -1,10 +1,12 @@
-<h1>Reserva de Turnos</h1>
+<h1>Solicitud de Turnos</h1>
 <%= simple_form_for @appointment do |f| %>
   <%= f.input :date_on, as: :string, autofocus: true %>
   <%= f.input :starts_at, as: :string,
     disabled: true,
     placeholder: "Primero seleccione una fecha" %>
   <%= f.input  :car, collection: current_user.cars.map(&:description), prompt: "Seleccione el vehículo", selected: current_user.cars.first %>
+  <%= f.association :job_types, as: :check_boxes, label: "Trabajos" %>
+  <%= f.input :note, as: :text, label: "Notas", input_html: {rows: 4} %>
 
   <%= f.submit "Solicitar turno" %>
 <% end %>
