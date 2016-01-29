@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :cars
   has_many :appointments, through: :cars
 
-  enum role: [:customer, :admin]
+  enum role: [:regular, :admin]
 
   def name
     "#{fname} #{lname}"

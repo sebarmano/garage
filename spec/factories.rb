@@ -1,6 +1,17 @@
 FactoryGirl.define do
+  factory :assignment do
+    appointment
+    job_type
+  end
+
+  factory :customer do
+    fname "John"
+    lname "Smith"
+    phone "123-456-7890"
+  end
+
   factory :job_type do
-    name "job_type"
+    name "Balanceo"
   end
 
   factory :job do
@@ -14,6 +25,9 @@ FactoryGirl.define do
     starts_at "10:00 AM"
     duration 2
     car
+    # after(:create) do |appointment|
+    #   appointment.assignments << create(:assignment)
+    # end
   end
 
   factory :car do
@@ -25,7 +39,7 @@ FactoryGirl.define do
     user
   end
 
-  factory :user, aliases: [:customer] do
+  factory :user do
     fname "fname"
     lname "lname"
     email "email@email.com"

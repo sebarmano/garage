@@ -8,6 +8,6 @@ RSpec.describe User, type: :model do
   it "has role of customer by default when created" do
     user = create(:user)
 
-    expect(user.customer?).to eq true
+    expect(user.regular?).to eq true
   end
 end

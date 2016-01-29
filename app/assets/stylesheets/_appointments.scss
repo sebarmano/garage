@@ -5,12 +5,12 @@
 .new_appointment .input {
   @include span-columns(4);
 
-  &.appointment_car {
+  &.appointment_car_id {
     @include omega;
   }
 }
 
-input[type="submit"] {
+.submit-appointment-button {
   @include span-columns(4);
   @include shift(4);
 }

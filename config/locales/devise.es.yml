@@ -51,6 +51,8 @@ es:
         forgot_your_password: "¿Ha olvidado su contraseña?"
         send_me_reset_password_instructions: Envíeme las instrucciones para resetear mi contraseña
     registrations:
+      user:
+        signed_up: Se ha registrado exitosamente. Registre ahora su vehículo.
       edit:
         are_you_sure: "¿Está usted seguro?"
         cancel_my_account: Anular mi cuenta

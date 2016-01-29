@@ -4,10 +4,17 @@
   <%= f.input :starts_at, as: :string,
     disabled: true,
     placeholder: "Primero seleccione una fecha" %>
-  <%= f.input  :car, collection: current_user.cars.map(&:description), prompt: "Seleccione el vehículo", selected: current_user.cars.first %>
-  <%= f.association :job_types, as: :check_boxes, label: "Trabajos" %>
+  <%= f.input  :car_id, collection: current_user.cars,
+                     label: "Seleccione el vehículo",
+                     selected: current_user.cars.first,
+                     label_method: :description,
+                     required: true %>
+  <%= f.association :job_types, as: :check_boxes,
+                                label: "Trabajos",
+                                required: true,
+                                blank: false %>
   <%= f.input :note, as: :text, label: "Notas", input_html: {rows: 4} %>
 
-  <%= f.submit "Solicitar turno" %>
+  <%= f.submit "Solicitar turno", class:"submit-appointment-button" %>
 <% end %>
 

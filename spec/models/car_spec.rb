@@ -13,6 +13,6 @@ RSpec.describe Car, type: :model do
                  model: "spazio",
                  license: "AAA111" )
 
-    expect(car.description).to eq("Fiat Spazio AAA111")
+    expect(car.description).to eq("Fiat Spazio (AAA111)")
   end
 end

@@ -40,7 +40,12 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date_on, :starts_at, :car)
+    params.require(:appointment).permit(:date_on,
+                                        :starts_at,
+                                        :car_id,
+                                        :note,
+                                        :job_type_ids => [])
+
   end
 
   def appointment_duration

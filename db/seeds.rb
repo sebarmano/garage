@@ -14,3 +14,4 @@ job_names = ["Alineación",
 job_names.each do |name|
   JobType.create(name: name)
 end
+

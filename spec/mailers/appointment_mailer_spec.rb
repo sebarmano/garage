@@ -5,13 +5,13 @@ RSpec.describe AppointmentMailer, type: :mailer do
     let(:mail) { AppointmentMailer.booked_appointment }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Booked appointment")
+      expect(mail.subject).to eq("Turno Solicitado")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(mail.body.encoded).to match("Turno Solicitado")
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe AppointmentMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Confirmed appointment")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
@@ -35,7 +35,7 @@ RSpec.describe AppointmentMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Cancelled appointment")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
@@ -49,7 +49,7 @@ RSpec.describe AppointmentMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Appointment reminder")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
