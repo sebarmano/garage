@@ -4,9 +4,9 @@
   <%= f.input :starts_at, as: :string,
     disabled: true,
     placeholder: "Primero seleccione una fecha" %>
-  <%= f.input  :car_id, collection: current_user.cars,
+  <%= f.input  :car_id, collection: current_customer.cars,
     label: "Seleccione el vehículo",
-    selected: current_user.cars.first,
+    selected: current_customer.cars.first,
     label_method: :description,
     required: true %>
   <%= f.simple_fields_for :assignments do |ff| %>

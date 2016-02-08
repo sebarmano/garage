@@ -2,7 +2,7 @@ include ActionView::Helpers::DateHelper
 
 class Appointment < ActiveRecord::Base
   belongs_to :car
-  has_one :user, through: :car
+  has_one :customer, through: :car
   has_many :assignments
   has_many :job_types, through: :assignments
 
@@ -35,7 +35,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def customer_name
-    user.name
+    customer.name
   end
 
   def booked_since

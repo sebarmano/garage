@@ -3,14 +3,18 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
+
   <div class="form-inputs registration">
-    <%= f.input :fname, required: true, autofocus: true %>
-    <%= f.input :lname, required: true %>
-    <%= f.input :phone, required: true %>
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
+
+  <%= f.simple_fields_for :customer do |customer_form| %>
+    <%= render partial: "customers/form_fields", locals: {f: customer_form} %>
+  <% end %>
   </div>
+
+
 
   <div class="form-actions registration-button">
     <%= f.submit "Registrarse" %>

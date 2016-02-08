@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
     if current_user.admin?
       @appointments = Appointment.all
     else
-      @appointments = current_user.appointments
+      @appointments = current_customer.appointments
     end
   end
 

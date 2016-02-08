@@ -7,7 +7,7 @@ feature "user sees their next appointment" do
   end
 
   scenario "with one next appointment" do
-    car = create :car, user: @user
+    car = create :car, customer: @user.customer
     @appointment = create :appointment, car: car
     visit dashboard_path
 

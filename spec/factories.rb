@@ -36,15 +36,13 @@ FactoryGirl.define do
     color "Color"
     license "AAA000"
     year 1
-    user
+    customer
   end
 
   factory :user do
-    fname "fname"
-    lname "lname"
     email "email@email.com"
     password "password"
-    phone "999-999-9999"
+    customer
 
     trait :confirmed do
       confirmed_at Time.zone.now

@@ -1,6 +1,7 @@
 class Car < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :customer
   has_many :appointments
+
   validates :brand, presence: true
   validates :model, presence: true
   validates :license, presence: true

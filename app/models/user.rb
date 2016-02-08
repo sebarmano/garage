@@ -3,12 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :cars
-  has_many :appointments, through: :cars
+  belongs_to :customer
 
   enum role: [:regular, :admin]
-
-  def name
-    "#{fname} #{lname}"
-  end
+  accepts_nested_attributes_for :customer
 end

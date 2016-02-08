@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Appointment, type: :model do
   it { is_expected.to belong_to :car }
-  it { is_expected.to have_one :user }
+  it { is_expected.to have_one :customer }
   it { is_expected.to validate_presence_of :date_on }
   it { is_expected.to validate_presence_of :starts_at }
   it { is_expected.to validate_presence_of :duration }
@@ -27,7 +27,9 @@ RSpec.describe Appointment, type: :model do
   end
 
   it "returns the start time and duration of appointments given a date" do
-    appointment = create(:appointment, date_on: Date.tomorrow)
+    appointment = build(:appointment, date_on: Date.tomorrow)
+    require 'pry'
+    binding.pry
 
     expect(Appointment.times_for(Date.tomorrow)).to eq [[appointment.starts_at,
                                                          appointment.duration]]
@@ -42,8 +44,8 @@ RSpec.describe Appointment, type: :model do
   end
 
   it "returns its customer name" do
-    user = create(:confirmed_user, fname: "John", lname: "Smith")
-    car = create(:car, user: user)
+    customer = create(:customer, fname: "John", lname: "Smith")
+    car = create(:car, customer: customer)
     appointment = create(:appointment, car: car)
 
     expect(appointment.customer_name).to eq("John Smith")
