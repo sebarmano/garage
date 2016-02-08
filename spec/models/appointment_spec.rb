@@ -27,9 +27,7 @@ RSpec.describe Appointment, type: :model do
   end
 
   it "returns the start time and duration of appointments given a date" do
-    appointment = build(:appointment, date_on: Date.tomorrow)
-    require 'pry'
-    binding.pry
+    appointment = create(:appointment, date_on: Date.tomorrow)
 
     expect(Appointment.times_for(Date.tomorrow)).to eq [[appointment.starts_at,
                                                          appointment.duration]]

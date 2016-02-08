@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204233340) do
+ActiveRecord::Schema.define(version: 20160208151058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 20160204233340) do
     t.string   "color"
     t.integer  "year"
     t.string   "license"
-    t.integer  "customer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "customer_id"
   end
 
   add_index "cars", ["customer_id"], name: "index_cars_on_customer_id", using: :btree
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20160204233340) do
   add_foreign_key "appointments", "jobs"
   add_foreign_key "assignments", "appointments"
   add_foreign_key "assignments", "job_types"
-  add_foreign_key "cars", "users", column: "customer_id"
+  add_foreign_key "cars", "customers"
   add_foreign_key "jobs", "appointments"
   add_foreign_key "jobs", "job_types"
   add_foreign_key "users", "customers"
