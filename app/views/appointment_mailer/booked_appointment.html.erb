@@ -1,6 +1,6 @@
 <h1>Turno Solicitado</h1>
 
-<p>Estimado <%= @user.fname %>,</p>
+<p>Estimado <%= @user.customer.fname %>,</p>
 <p>
 Recibimos la solicitud del turno para el día <%= @appointment.date_on %> a las <%= @appointment.starts_at %>. Confirmaremos el turno a la brevedad y le enviaremos un correo electrónico con dicha confirmación.
 

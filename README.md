@@ -1,5 +1,14 @@
 # Garage
 
+Ruby on Rails work in progress application to manage a car workshop. The main
+features are:
+
+- Appointment management with booking and confirmation from an admin.
+- Customer cars and personal data regitration.
+- Email/SMS confirmation and reminders for appointmetns.
+- Employees management with task management based on appointments.
+- Reporting tool for jobs done, revenues, replacements inventory, etc.
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine

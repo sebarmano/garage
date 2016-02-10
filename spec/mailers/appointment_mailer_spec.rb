@@ -3,10 +3,11 @@ require "rails_helper"
 RSpec.describe AppointmentMailer, type: :mailer do
   describe "booked_appointment" do
     let(:mail) { AppointmentMailer.booked_appointment }
+    let(:user) { create(:user) }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Turno Solicitado")
-      expect(mail.to).to eq(["to@example.org"])
+      expect(mail.to).to eq([user.email])
       expect(mail.from).to eq(["garage@gmail.com"])
     end
 
