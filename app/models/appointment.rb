@@ -12,7 +12,7 @@ class Appointment < ActiveRecord::Base
   validates :starts_at, presence: true
 
   accepts_nested_attributes_for :assignments,
-    allow_destroy: true
+                                allow_destroy: true
 
   enum status: [:booked, :confirmed, :cancelled, :done]
 

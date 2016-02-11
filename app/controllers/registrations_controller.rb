@@ -1,11 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
-
   def new
     build_resource({})
     set_minimum_password_length
     yield resource if block_given?
-    self.resource.build_customer
-    respond_with self.resource
+    resource.build_customer
+    respond_with resource
   end
 
   protected
@@ -17,12 +16,13 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(resource_name)
-      .permit(:email,
-    :password,
-    :password_confirmation,
-    customer_attributes: [:fname, :lname, :phone,
-                          cars_attributes: [:brand, :model, :license]])
-
+    params.require(resource_name).
+           permit(:email,
+                 :password,
+                 :password_confirmation,
+                 customer_attributes: [:fname, :lname, :phone,
+                                       cars_attributes: [:brand,
+                                                         :model,
+                                                         :license]])
   end
 end

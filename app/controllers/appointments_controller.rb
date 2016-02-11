@@ -44,7 +44,8 @@ class AppointmentsController < ApplicationController
                                         :starts_at,
                                         :car_id,
                                         :note,
-                                        :assignments_attributes => [:job_type_id, :_destroy])
+                                        assignments_attributes:
+                                          [:job_type_id, :_destroy])
 
   end
 

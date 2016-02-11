@@ -5,7 +5,6 @@ class Customer < ActiveRecord::Base
 
   # accepts_nested_attributes_for :cars
 
-
   def name
     "#{fname} #{lname}"
   end
