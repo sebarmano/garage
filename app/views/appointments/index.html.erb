@@ -27,15 +27,15 @@
                   <%= check_box_tag "appointment_ids[]",
                     appointment.id,
                     false,
-                    class: "checbox-button" %>
+                    class: "checkbox-button" %>
                 </label>
               <% end %>
             </td>
           </tr>
       </tbody>
+  <% end %>
     </table>
     <%= submit_tag "Confirmar marcados" %>
-  <% end %>
   </section>
 <% else %>
   <p>No se encontraron turnos.</p>

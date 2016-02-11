@@ -2,8 +2,8 @@ require "rails_helper"
 
 feature "User sees navbar depending on role" do
   scenario "when is a customer sees book appointments link" do
-    customer = create(:customer)
-    login_as(customer, scope: :user)
+    user = create(:user)
+    login_as(user, scope: :user)
 
     visit dashboard_path
     expect(page).to have_text("Solicitud de turnos")

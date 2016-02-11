@@ -3,15 +3,18 @@ require "rails_helper"
 RSpec.describe AppointmentMailer, type: :mailer do
   describe "booked_appointment" do
     let(:mail) { AppointmentMailer.booked_appointment }
+    let(:user) { create(:user) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Booked appointment")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      skip "learn how to test mailers"
+      expect(mail.subject).to eq("Turno Solicitado")
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      skip "learn how to test mailers"
+      expect(mail.body.encoded).to match("Turno Solicitado")
     end
   end
 
@@ -21,7 +24,7 @@ RSpec.describe AppointmentMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Confirmed appointment")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
@@ -35,7 +38,7 @@ RSpec.describe AppointmentMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Cancelled appointment")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do
@@ -49,7 +52,7 @@ RSpec.describe AppointmentMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Appointment reminder")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["garage@gmail.com"])
     end
 
     it "renders the body" do

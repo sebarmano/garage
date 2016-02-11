@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207230038) do
+ActiveRecord::Schema.define(version: 20160208151058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,23 +25,42 @@ ActiveRecord::Schema.define(version: 20151207230038) do
     t.time     "starts_at",              null: false
     t.integer  "job_id"
     t.integer  "status",     default: 0, null: false
+    t.text     "note"
   end
 
   add_index "appointments", ["car_id"], name: "index_appointments_on_car_id", using: :btree
   add_index "appointments", ["job_id"], name: "index_appointments_on_job_id", using: :btree
 
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "appointment_id"
+    t.integer  "job_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "assignments", ["appointment_id"], name: "index_assignments_on_appointment_id", using: :btree
+  add_index "assignments", ["job_type_id"], name: "index_assignments_on_job_type_id", using: :btree
+
   create_table "cars", force: :cascade do |t|
-    t.string   "brand",      null: false
-    t.string   "model",      null: false
+    t.string   "brand",       null: false
+    t.string   "model",       null: false
     t.string   "color"
     t.integer  "year"
     t.string   "license"
-    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "customer_id"
+  end
+
+  add_index "cars", ["customer_id"], name: "index_cars_on_customer_id", using: :btree
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "cars", ["user_id"], name: "index_cars_on_user_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -77,9 +96,9 @@ ActiveRecord::Schema.define(version: 20151207230038) do
   add_index "jobs", ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "fname",                               null: false
-    t.string   "lname",                               null: false
-    t.string   "phone",                               null: false
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "phone"
     t.integer  "gid"
     t.integer  "role",                   default: 0,  null: false
     t.string   "email",                  default: "", null: false
@@ -98,15 +117,20 @@ ActiveRecord::Schema.define(version: 20151207230038) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "customer_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["customer_id"], name: "index_users_on_customer_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "appointments", "cars"
   add_foreign_key "appointments", "jobs"
-  add_foreign_key "cars", "users"
+  add_foreign_key "assignments", "appointments"
+  add_foreign_key "assignments", "job_types"
+  add_foreign_key "cars", "customers"
   add_foreign_key "jobs", "appointments"
   add_foreign_key "jobs", "job_types"
+  add_foreign_key "users", "customers"
 end

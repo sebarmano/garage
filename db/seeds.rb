@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+job_names = ["Alineación",
+             "Balanceo",
+             "Cambio de neumáticos",
+             "Revisión general"]
+
+job_names.each do |name|
+  JobType.create(name: name)
+end

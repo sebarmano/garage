@@ -1,8 +1,5 @@
-<h1>form for cars</h1>
-
 <%= simple_form_for @car do |f| %>
-  <%= f.input :brand, required: true %>
-  <%= f.input :model, required: true %>
-  <%= f.input :license, required: true %>
+  <%= render partial: "form_fields", locals: {f: f} %>
   <%= f.submit "Registrar vehículo" %>
 <% end %>
+

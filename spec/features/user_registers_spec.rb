@@ -17,7 +17,7 @@ feature "user registers" do
     fill_in "Email", with: "juan@perez.com"
     fill_in "Contraseña", with: "password"
     fill_in "Repita la contraseña", with: "password"
-    click_on "Create User"
+    click_on "Registrarse"
 
     expect(current_path).to eq(new_car_path)
     expect_to_see_successful_user_creation_message
@@ -35,7 +35,7 @@ feature "user registers" do
 
   def expect_to_see_successful_user_creation_message
     expect(page).to have_css("div.flash-notice",
-                             text: t("devise.registrations.signed_up"))
+                             text: t("devise.registrations.user.signed_up"))
   end
 
   def expect_to_see_successful_vehicle_creation_message

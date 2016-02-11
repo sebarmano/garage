@@ -1,12 +1,24 @@
-<h1>Reserva de Turnos</h1>
-<%= simple_form_for @appointment do |f| %>
+<h1>Solicitud de Turnos</h1>
+<%= simple_form_for setup_appointment(@appointment) do |f| %>
   <%= f.input :date_on, as: :string, autofocus: true %>
   <%= f.input :starts_at, as: :string,
     disabled: true,
     placeholder: "Primero seleccione una fecha" %>
-  <% unless current_user.cars.count < 2 %>
-    <%= f.input :car, collection: current_user.cars, label_method: description %>
+  <%= f.input  :car_id, collection: current_customer.cars,
+    label: "Seleccione el vehículo",
+    selected: current_customer.cars.first,
+    label_method: :description,
+    required: true %>
+  <%= f.simple_fields_for :assignments do |ff| %>
+    <div>
+    <%= ff.check_box :_destroy,
+      {checked: ff.object.persisted?}, "0", "1" %>
+    <%= ff.label :_destroy, ff.object.job_type.name %>
+    <%= ff.hidden_field :job_type_id %>
+    </div>
   <% end %>
-  <%= f.submit "Solicitar turno" %>
+  <%= f.input :note, as: :text, label: "Notas", input_html: {rows: 4} %>
+
+  <%= f.submit "Solicitar turno", class:"submit-appointment-button" %>
 <% end %>
 

@@ -2,13 +2,17 @@ include ActionView::Helpers::DateHelper
 
 class Appointment < ActiveRecord::Base
   belongs_to :car
-  belongs_to :job
-  has_one :user, through: :car
+  has_one :customer, through: :car
+  has_many :assignments
+  has_many :job_types, through: :assignments
 
   validates :car, presence: true
   validates :date_on, presence: true
   validates :duration, presence: true
   validates :starts_at, presence: true
+
+  accepts_nested_attributes_for :assignments,
+                                allow_destroy: true
 
   enum status: [:booked, :confirmed, :cancelled, :done]
 
@@ -31,7 +35,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def customer_name
-    user.name
+    customer.name
   end
 
   def booked_since

@@ -9,7 +9,7 @@ class AppointmentMailer < ApplicationMailer
     @appointment = user.appointments.last
 
     mail to: user.email,
-         subject: "Turno solicitado"
+         subject: "Turno Solicitado"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

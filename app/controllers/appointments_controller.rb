@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
     if current_user.admin?
       @appointments = Appointment.all
     else
-      @appointments = current_user.appointments
+      @appointments = current_customer.appointments
     end
   end
 
@@ -15,7 +15,6 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.car = appointment_car
     @appointment.duration = appointment_duration
 
     if @appointment.save
@@ -41,11 +40,13 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date_on, :starts_at, :car)
-  end
+    params.require(:appointment).permit(:date_on,
+                                        :starts_at,
+                                        :car_id,
+                                        :note,
+                                        assignments_attributes:
+                                          [:job_type_id, :_destroy])
 
-  def appointment_car
-    params[:appointment][:car] || current_user.cars.first
   end
 
   def appointment_duration
