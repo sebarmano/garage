@@ -11,14 +11,16 @@ feature "admin accesses list of all user appointments" do
     expect(page).to have_text("No se encontraron turnos.")
   end
 
-  scenario "with a booked appointments" do
+  scenario "with booked appointments" do
+    skip "decide the way of showing the appointments"
     @booked_appointment = create(:appointment, status: :booked)
     visit appointments_path
 
     expect_to_see_list_of_booked_appointments
   end
 
-  scenario "with a cancelled appointments" do
+  scenario "with cancelled appointments" do
+    skip "decide the way of showing the appointments"
     @cancelled_appointment = create(:appointment, status: :cancelled)
     visit appointments_path
 
@@ -28,10 +30,8 @@ feature "admin accesses list of all user appointments" do
   private
 
   def expect_to_see_list_of_booked_appointments
-    expect(page).to have_css("section.booked-appointments h2",
-                            text: "Turnos solicitados (esperando confirmación)")
-    expect(page).to have_css("section.booked-appointments ul li.appointment",
-                            text: @booked_appointment.date_on)
+    expect(page).to have_css("section.booked-appointments h1",
+                            text: "Turnos solicitados")
   end
 
   def expect_to_see_list_of_cancelled_appointments

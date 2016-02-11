@@ -16,11 +16,13 @@ es:
         password: 'Contraseña'
 
       user:
-        fname: "Nombre"
-        lname: "Apellido"
-        phone: "Teléfono de contacto"
         password_confirmation: "Repita la contraseña"
         email: 'Email'
+
+      customer:
+        fname: Nombre
+        lname: Apellido
+        phone: Teléfono de contacto
 
       appointment:
         date_on: "Seleccione una fecha"
