@@ -17,12 +17,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(resource_name).
-           permit(:email,
-                 :password,
-                 :password_confirmation,
-                 customer_attributes: [:fname, :lname, :phone,
-                                       cars_attributes: [:brand,
-                                                         :model,
-                                                         :license]])
+      permit(:email,
+             :password,
+             :password_confirmation,
+             customer_attributes: [:fname, :lname, :phone,
+                                   cars_attributes: [:brand,
+                                                     :model,
+                                                     :license]])
   end
 end
