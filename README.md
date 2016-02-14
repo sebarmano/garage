@@ -1,6 +1,7 @@
 # Garage
 
-https://travis-ci.org/sebarmano/garage.svg?branch=master
+[![Build Status](https://travis-ci.org/sebarmano/garage.svg?branch=master)]
+(https://travis-ci.org/sebarmano/garage)
 [![Code Climate](https://codeclimate.com/github/sebarmano/garage/badges/gpa.svg)]
 (https://codeclimate.com/github/sebarmano/garage)
 
