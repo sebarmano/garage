@@ -1,0 +1,32 @@
+<table class="table-minimal">
+  <thead>
+    <tr>
+      <th class="date">Fecha</th>
+      <th>Hora / Duración</th>
+      <th>Cliente</th>
+      <th>Tiempo desde solicitud</th>
+      <th><a href="#" id="select-all-button">Marcar todos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% appointments.each do |appointment| %>
+      <tr>
+        <td class="date"><%= appointment.date_on %></td>
+        <td>
+          <%= appointment.time %> /
+          <%= appointment.duration %> horas
+        </td>
+        <td><%= appointment.customer_name %></td>
+        <td><%= appointment.booked_since %></td>
+        <td>
+          <label>
+            <%= check_box_tag "appointment_ids[]",
+              appointment.id,
+              false,
+              class: "checkbox-button" %>
+        </label>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

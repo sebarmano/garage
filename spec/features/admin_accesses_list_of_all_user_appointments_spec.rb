@@ -12,32 +12,60 @@ feature "admin accesses list of all user appointments" do
   end
 
   scenario "with booked appointments" do
-    skip "decide the way of showing the appointments"
     @booked_appointment = create(:appointment, status: :booked)
     visit appointments_path
+    click_on "Turnos Solicitados"
 
     expect_to_see_list_of_booked_appointments
   end
 
+  scenario "with confirmed appointments" do
+    @confirmed_appointment = create(:appointment, status: :confirmed)
+    visit appointments_path
+    click_on "Turnos Confirmados"
+
+    expect_to_see_list_of_confirmed_appointments
+  end
+
   scenario "with cancelled appointments" do
-    skip "decide the way of showing the appointments"
     @cancelled_appointment = create(:appointment, status: :cancelled)
     visit appointments_path
+    click_on "Turnos Cancelados"
 
     expect_to_see_list_of_cancelled_appointments
+  end
+
+  scenario "with all appointments" do
+    car = create(:car)
+    @booked_appointment = create(:appointment, car:car)
+    @confirmed_appointment = create(:appointment, car:car)
+    @cancelled_appointment = create(:appointment, car:car)
+    visit appointments_path
+
+    expect_to_see_list_of_all_appointments
   end
 
   private
 
   def expect_to_see_list_of_booked_appointments
-    expect(page).to have_css("section.booked-appointments h1",
-                             text: "Turnos solicitados")
+    expect(page).to have_css("div.booked-appointments")
+    expect(page).to have_css("td.date", text: @booked_appointment.date_on)
+  end
+
+  def expect_to_see_list_of_confirmed_appointments
+    expect(page).to have_css("div.confirmed-appointments")
+    expect(page).to have_css("td.date", text: @confirmed_appointment.date_on)
   end
 
   def expect_to_see_list_of_cancelled_appointments
-    expect(page).to have_css("section.cancelled-appointments h2",
-                             text: "Turnos cancelados")
-    expect(page).to have_css("section.cancelled-appointments ul li.appointment",
-                             text: @cancelled_appointment.date_on)
+    expect(page).to have_css("div.cancelled-appointments")
+    expect(page).to have_css("td.date", text: @cancelled_appointment.date_on)
+  end
+
+  def expect_to_see_list_of_all_appointments
+    expect(page).to have_css("div.all-appointments")
+    expect(page).to have_css("td.date", text: @booked_appointment.date_on)
+    expect(page).to have_css("td.date", text: @confirmed_appointment.date_on)
+    expect(page).to have_css("td.date", text: @cancelled_appointment.date_on)
   end
 end
