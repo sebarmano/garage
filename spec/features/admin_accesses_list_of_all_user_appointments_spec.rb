@@ -37,9 +37,9 @@ feature "admin accesses list of all user appointments" do
 
   scenario "with all appointments" do
     car = create(:car)
-    @booked_appointment = create(:appointment, car:car)
-    @confirmed_appointment = create(:appointment, car:car)
-    @cancelled_appointment = create(:appointment, car:car)
+    @booked_appointment = create(:appointment, car: car)
+    @confirmed_appointment = create(:appointment, car: car)
+    @cancelled_appointment = create(:appointment, car: car)
     visit appointments_path
 
     expect_to_see_list_of_all_appointments
