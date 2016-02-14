@@ -23,7 +23,7 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
-gem "devise"
+gem "devise", "~> 3.5.4"
 gem "pickadate-rails"
 
 group :development do
@@ -55,6 +55,7 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
+  gem "rake"
 end
 
 group :staging, :production do

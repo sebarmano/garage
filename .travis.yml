@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - "2.2.3"
+cache: bundler
+before_script:
+  - psql -c 'create database garage_test;' -U postgres
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec
