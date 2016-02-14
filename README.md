@@ -1,5 +1,10 @@
 # Garage
 
+https://travis-ci.org/sebarmano/garage.svg?branch=master
+[![Code Climate](https://codeclimate.com/github/sebarmano/garage/badges/gpa.svg)]
+(https://codeclimate.com/github/sebarmano/garage)
+
+
 Ruby on Rails work in progress application to manage a car workshop. The main
 features are:
 
