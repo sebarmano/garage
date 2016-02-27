@@ -8,6 +8,16 @@
   &.appointment_car_id {
     @include omega;
   }
+
+  input[type=checkbox] + label {
+    color: #ccc;
+    font-style: italic;
+  }
+
+  input[type=checkbox]:checked + label {
+    color: #ccc;
+    font-style: normal;
+  }
 }
 
 .submit-appointment-button {
