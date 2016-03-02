@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root "dashboards#show"
+
   resource :dashboard, only: :show
   resources :appointments, only: [:index, :new, :create] do
     collection do
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :cars, only: [:new, :create]
+  resources :customers, only: [:new, :create]
   resources :available_hours, only: :index, format: :json
 
   devise_for :users, controllers: { registrations: "registrations" }

@@ -12,11 +12,13 @@
       <%= ff.hidden_field :job_type_id %>
     </div>
   <% end %>
-  <%= f.input  :car_id, collection: current_customer.cars,
-    label: "Seleccione el vehículo",
-    selected: current_customer.cars.first,
-    label_method: :description,
-    required: true %>
+  <% if @customer %>
+    <%= f.input  :car_id, collection: @customer.cars,
+      label: "Seleccione el vehículo",
+      selected: current_customer.cars.first,
+      label_method: :description,
+      required: true %>
+  <% end %>
 
   <%= f.submit "Solicitar turno", class:"submit-appointment-button" %>
 <% end %>
