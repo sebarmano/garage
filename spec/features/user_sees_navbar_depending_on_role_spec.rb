@@ -7,6 +7,7 @@ feature "User sees navbar depending on role" do
 
     visit dashboard_path
     expect(page).to have_text("Solicitud de turnos")
+    expect(page).to have_text("Panel de Control")
   end
 
   scenario "when is an admin sees button to see list of appointments" do
@@ -15,5 +16,6 @@ feature "User sees navbar depending on role" do
 
     visit dashboard_path
     expect(page).to have_text("Turnos")
+    expect(page).to have_text("Solicitud de turnos")
   end
 end

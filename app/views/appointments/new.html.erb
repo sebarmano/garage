@@ -4,20 +4,21 @@
   <%= f.input :starts_at, as: :string,
     disabled: true,
     placeholder: "Primero seleccione una fecha" %>
-  <%= f.input  :car_id, collection: current_customer.cars,
-    label: "Seleccione el vehículo",
-    selected: current_customer.cars.first,
-    label_method: :description,
-    required: true %>
   <%= f.simple_fields_for :assignments do |ff| %>
     <div>
-    <%= ff.check_box :_destroy,
-      {checked: ff.object.persisted?}, "0", "1" %>
-    <%= ff.label :_destroy, ff.object.job_type.name %>
-    <%= ff.hidden_field :job_type_id %>
+      <%= ff.check_box :_destroy,
+        {checked: ff.object.persisted?}, "0", "1" %>
+      <%= ff.label :_destroy, ff.object.job_type.name %>
+      <%= ff.hidden_field :job_type_id %>
     </div>
   <% end %>
-  <%= f.input :note, as: :text, label: "Notas", input_html: {rows: 4} %>
+  <% if @customer %>
+    <%= f.input  :car_id, collection: @customer.cars,
+      label: "Seleccione el vehículo",
+      selected: current_customer.cars.first,
+      label_method: :description,
+      required: true %>
+  <% end %>
 
   <%= f.submit "Solicitar turno", class:"submit-appointment-button" %>
 <% end %>

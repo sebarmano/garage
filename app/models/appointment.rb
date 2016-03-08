@@ -14,7 +14,7 @@ class Appointment < ActiveRecord::Base
   accepts_nested_attributes_for :assignments,
                                 allow_destroy: true
 
-  enum status: [:booked, :confirmed, :cancelled, :done]
+  enum status: [:booked, :confirmed, :cancelled, :done, :uncompleted]
 
   def self.list_for(date)
     where(date_on: date)
