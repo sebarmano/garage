@@ -21,7 +21,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.duration = appointment_duration
-    if current_user.admin? && @customer == nil
+    if current_user.admin? && @customer.nil?
       set_uncompleted_appointment
     end
 
@@ -62,7 +62,7 @@ class AppointmentsController < ApplicationController
   end
 
   def set_uncompleted_appointment
-    @appointment.car = Car.where(brand:"default", license: "AAA000").first
+    @appointment.car = Car.where(brand: "default", license: "AAA000").first
     @appointment.status = "uncompleted"
   end
 end

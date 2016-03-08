@@ -9,15 +9,15 @@
     @include omega;
   }
 
-  input[type=checkbox] + label {
-    color: #ccc;
-    font-style: italic;
-  }
-
-  input[type=checkbox]:checked + label {
-    color: #ccc;
-    font-style: normal;
-  }
+  // input[type=checkbox] + label {
+  //   color: #ccc;
+  //   font-style: italic;
+  // }
+  //
+  // input[type=checkbox]:checked + label {
+  //   color: #ccc;
+  //   font-style: normal;
+  // }
 }
 
 .submit-appointment-button {
