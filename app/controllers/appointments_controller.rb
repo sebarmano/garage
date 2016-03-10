@@ -36,15 +36,21 @@ class AppointmentsController < ApplicationController
   end
 
   def confirm
-    get_appointments.map(&:confirmed!)
-    redirect_to appointments_path, flash: { success: "#{get_appointments.count}
-                                            turnos fueron confirmados" }
+    get_appointments.confirmed!
+    redirect_to appointments_path, flash: { success:
+                                            "El turno fue confirmado" }
+  end
+
+  def cancel
+    get_appointments.cancelled!
+    redirect_to appointments_path, flash: { success:
+                                            "El turno fue cancelado" }
   end
 
   private
 
   def get_appointments
-    Appointment.find(params[:appointment_ids])
+    Appointment.find(params[:id])
   end
 
   def appointment_params
