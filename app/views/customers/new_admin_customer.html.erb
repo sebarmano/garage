@@ -1,0 +1,14 @@
+<h1>Nuevo Cliente</h1>
+
+<h2>Datos personales</h2>
+<%= simple_form_for @customer do |f|%>
+  <%= render partial: "form_fields", locals: { f: f }  %>
+
+  <h2>Datos del vehículo</h2>
+  <%= f.simple_fields_for :cars do |cf| %>
+    <%= render partial: "cars/form_fields", locals: { f: cf } %>
+  <% end %>
+
+  <%= hidden_field_tag "appointment_id", @appointment.id if @appointment%>
+  <%= f.submit "Registrar cliente" %>
+<% end %>
