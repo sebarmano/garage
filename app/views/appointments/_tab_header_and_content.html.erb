@@ -1,0 +1,10 @@
+<li class="tab-header-and-content">
+  <a href="#" class="tab-link is-active"><%= title %></a>
+  <div class="tab-content">
+    <div class="booked-appointments">
+        <%= render partial: "appointments_table", locals: { appointments: appointments} %>
+    </div>
+  </div>
+</li>
+
+

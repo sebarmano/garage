@@ -1,17 +1,7 @@
 <h1>Gestión de Turnos</h1> <% if @appointments.any? %>
   <ul class="accordion-tabs-minimal">
-    <li class="tab-header-and-content">
-      <a href="#" class="tab-link is-active">Turnos Solicitados</a>
-      <div class="tab-content">
-        <div class="booked-appointments">
-          <%= form_tag confirm_appointments_path, method: :put do %>
-            <%= render partial: "appointments_table",
-              locals:{ appointments: @appointments.booked } %>
-            <%= submit_tag "Confirmar marcados" %>
-          <% end %>
-        </div>
-      </div>
-    </li>
+    <%= render partial: "tab_header_and_content", locals: { title: "Turnos Solicitados", appointments: @appointments.booked } %>
+
     <li class="tab-header-and-content">
       <a href="#" class="tab-link">Turnos Confirmados</a>
       <div class="tab-content">
@@ -25,8 +15,7 @@
       <a href="#" class="tab-link">Turnos Cancelados</a>
       <div class="tab-content">
         <div class="cancelled-appointments">
-          <%= render partial: "appointments_table",
-            locals: { appointments: @appointments.cancelled } %>
+          <%= render partial: "appointments_table", locals: { appointments: @appointments.cancelled } %>
         </div>
       </div>
     </li>

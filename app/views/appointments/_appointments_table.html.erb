@@ -1,30 +1,51 @@
 <table class="table-minimal">
   <thead>
     <tr>
+      <th>Estado</th>
       <th class="date">Fecha</th>
       <th>Hora / Duración</th>
       <th>Cliente</th>
-      <th>Tiempo desde solicitud</th>
-      <th><a href="#" id="select-all-button">Marcar todos</th>
+      <th>Ultima modificación</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% appointments.each do |appointment| %>
       <tr>
+        <td>
+          <% if appointment.booked? %>
+            <span class="badge-alert">SOLICITADO</span>
+          <% elsif appointment.confirmed? %>
+            <span class="badge-success">CONFIRMADO</span>
+          <% elsif appointment.cancelled? %>
+            <span class="badge-error">CANCELADO</span>
+          <% elsif appointment.uncompleted? %>
+            <span class="badge-alert">INCOMPLETO</span>
+          <% end %>
+        </td>
         <td class="date"><%= appointment.date_on %></td>
         <td>
           <%= appointment.time %> /
           <%= appointment.duration %> horas
         </td>
-        <td><%= appointment.customer_name %></td>
-        <td><%= appointment.booked_since %></td>
+          <% if appointment.uncompleted? %>
+            <td class="muted">Ninguno</td>
+          <% else %>
+            <td><%= appointment.customer_name %></td>
+          <% end %>
+        <td><%= appointment.modified_since %></td>
         <td>
-          <label>
-            <%= check_box_tag "appointment_ids[]",
-              appointment.id,
-              false,
-              class: "checkbox-button" %>
-        </label>
+        <% if appointment.booked? %>
+            <%= button_to "Confirmar", confirm_appointment_path(appointment),
+              method: :put %>
+        <% elsif appointment.confirmed?  %>
+          <%= button_to "Cancelar", cancel_appointment_path(appointment), data:
+          { confirm: "Esta seguro que desea cancelar este turno?" }, method:
+            :put %>
+        <% elsif appointment.uncompleted?  %>
+            <%= button_to "Agregar cliente", cancel_appointment_path(appointment),
+              method: :put %>
+        <% end %>
         </td>
       </tr>
     <% end %>

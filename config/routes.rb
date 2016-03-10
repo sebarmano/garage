@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: :show
   resources :appointments, only: [:index, :new, :create] do
-    collection do
+    member do
       put :confirm
+      put :cancel
     end
   end
   resources :cars, only: [:new, :create]

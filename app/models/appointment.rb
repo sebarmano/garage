@@ -38,8 +38,8 @@ class Appointment < ActiveRecord::Base
     customer.name
   end
 
-  def booked_since
-    time_ago_in_words(created_at)
+  def modified_since
+    time_ago_in_words(updated_at)
   end
 
   def time

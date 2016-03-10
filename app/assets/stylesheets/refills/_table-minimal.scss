@@ -10,6 +10,7 @@
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
+  $muted-font-color: #808080;
   $table-border-color: $base-border-color;
   $table-border: 1px solid $table-border-color;
   $table-background: $base-background-color;
@@ -78,6 +79,9 @@
           margin-bottom: 0;
           width: auto;
         }
+      }
+      &.muted {
+        color: $muted-font-color;
       }
     }
   }
