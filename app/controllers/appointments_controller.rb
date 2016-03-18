@@ -21,12 +21,12 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.duration = appointment_duration
-    if current_user.admin? && @customer.nil?
-      set_uncompleted_appointment
-    end
+    @appointment.status = "uncompleted" unless @appointment.car
 
-    if @appointment.save
-      AppointmentMailer.booked_appointment(current_user).deliver_later
+    if @appointment.save(context: current_user.role)
+      if @appointment.customer
+        AppointmentMailer.booked_appointment(current_user).deliver_later
+      end
       redirect_to dashboard_path, flash:
         { success: "El turno ha sido solicitado.
           Recibirá un correo electrónico cuando sea confirmado." }
@@ -65,10 +65,5 @@ class AppointmentsController < ApplicationController
 
   def appointment_duration
     params[:appointment][:duration] || 2
-  end
-
-  def set_uncompleted_appointment
-    @appointment.car = Car.where(brand: "default", license: "AAA000").first
-    @appointment.status = "uncompleted"
   end
 end

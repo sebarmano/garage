@@ -3,7 +3,10 @@ class Customer < ActiveRecord::Base
   has_many :cars
   has_many :appointments, through: :cars
 
-  # accepts_nested_attributes_for :cars
+  validates :fname, presence: true
+  validates :lname, presence: true
+
+  accepts_nested_attributes_for :cars
 
   def name
     "#{fname} #{lname}"

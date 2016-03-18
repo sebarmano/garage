@@ -6,7 +6,7 @@ RSpec.describe Appointment, type: :model do
   it { is_expected.to validate_presence_of :date_on }
   it { is_expected.to validate_presence_of :starts_at }
   it { is_expected.to validate_presence_of :duration }
-  it { is_expected.to validate_presence_of :car }
+  # it { is_expected.to validate_presence_of :car }
   it { is_expected.to define_enum_for(:status) }
 
   it "has status of 'booked' when is created" do

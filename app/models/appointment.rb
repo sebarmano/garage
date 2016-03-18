@@ -3,10 +3,10 @@ include ActionView::Helpers::DateHelper
 class Appointment < ActiveRecord::Base
   belongs_to :car
   has_one :customer, through: :car
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :job_types, through: :assignments
 
-  validates :car, presence: true
+  validates :car, presence: true, on: :regular
   validates :date_on, presence: true
   validates :duration, presence: true
   validates :starts_at, presence: true

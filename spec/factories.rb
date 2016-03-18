@@ -25,9 +25,19 @@ FactoryGirl.define do
     starts_at "10:00 AM"
     duration 2
     car
-    # after(:create) do |appointment|
-    #   appointment.assignments << create(:assignment)
-    # end
+
+    trait :uncompleted do
+      car nil
+      status :uncompleted
+    end
+
+    trait :confirmed do
+      status :confirmed
+    end
+
+    trait :cancelled do
+      status :cancelled
+    end
   end
 
   factory :car do

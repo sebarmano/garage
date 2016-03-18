@@ -43,8 +43,8 @@
           { confirm: "Esta seguro que desea cancelar este turno?" }, method:
             :put %>
         <% elsif appointment.uncompleted?  %>
-            <%= button_to "Agregar cliente", cancel_appointment_path(appointment),
-              method: :put %>
+            <%= link_to "Agregar cliente", new_customer_path(appointment_id:
+                                                             appointment.id) %>
         <% end %>
         </td>
       </tr>

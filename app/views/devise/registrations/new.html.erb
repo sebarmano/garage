@@ -9,9 +9,9 @@
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
 
-  <%= f.simple_fields_for :customer do |customer_form| %>
-    <%= render partial: "customers/form_fields", locals: {f: customer_form} %>
-  <% end %>
+    <%= f.simple_fields_for :customer do |customer_form| %>
+      <%= render partial: "customers/form_fields", locals: {f: customer_form} %>
+    <% end %>
   </div>
 
 

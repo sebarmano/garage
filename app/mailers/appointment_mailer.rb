@@ -6,7 +6,7 @@ class AppointmentMailer < ApplicationMailer
   #
   def booked_appointment(user)
     @user = user
-    @appointment = user.appointments.last
+    @appointment = user.customer.appointments.last
 
     mail to: user.email,
          subject: "Turno Solicitado"

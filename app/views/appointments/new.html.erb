@@ -2,7 +2,6 @@
 <%= simple_form_for setup_appointment(@appointment) do |f| %>
   <%= f.input :date_on, as: :string, autofocus: true %>
   <%= f.input :starts_at, as: :string,
-    disabled: true,
     placeholder: "Primero seleccione una fecha" %>
   <%= f.simple_fields_for :assignments do |ff| %>
     <div>
