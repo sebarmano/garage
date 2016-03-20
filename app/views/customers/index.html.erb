@@ -1,0 +1,9 @@
+<h1>customers index</h1>
+<div><%= render "dashboards/customer_search_form" %></div>
+<div class="user-list">
+  <ul>
+    <% @customers.each do |customer| %>
+      <li><%= customer.name  %></li>
+    <% end %>
+  </ul>
+</div>

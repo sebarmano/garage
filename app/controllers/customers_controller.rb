@@ -1,4 +1,8 @@
 class CustomersController < ApplicationController
+  def index
+    @customers = Customer.search(params[:search])
+  end
+
   def new
     @customer = Customer.new
     @customer.cars.build
