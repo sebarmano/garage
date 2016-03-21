@@ -1,5 +1,13 @@
 <h1>This is the admin dashboard</h1>
 
-<%= link_to "Crear turno", new_appointment_path %>
-<%= link_to "Crear cliente", new_customer_path %>
+<div class="appointments-section">
+  <h2>Turnos</h2>
+  <div><%= link_to "Crear turno", new_appointment_path %></div>
+</div>
+
+<div class="customers-section">
+  <h2>Clientes</h2>
+  <%= render "dashboards/customer_search_form" %>
+  <%= link_to "Crear cliente", new_customer_path %>
+</div>
 

@@ -11,4 +11,13 @@ class Customer < ActiveRecord::Base
   def name
     "#{fname} #{lname}"
   end
+
+  def self.search(search)
+    if search
+      where("fname ILIKE ? OR  lname ILIKE ?", "%#{search}%",
+            "%#{search}%").order("lname ASC")
+    else
+      all
+    end
+  end
 end
