@@ -1,5 +1,0 @@
-h1>Datos personales</h1>
-
-<%= simple_form_for @customer do |f|%>
-  <%= render partial: "form_fields", locals: {f: f}  %>
-<% end %>

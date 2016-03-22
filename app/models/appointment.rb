@@ -3,6 +3,7 @@ include ActionView::Helpers::DateHelper
 class Appointment < ActiveRecord::Base
   belongs_to :car
   has_one :customer, through: :car
+  has_one :user, through: :customer
   has_many :assignments, dependent: :destroy
   has_many :job_types, through: :assignments
 
@@ -44,5 +45,9 @@ class Appointment < ActiveRecord::Base
 
   def time
     starts_at.strftime("%H:%M")
+  end
+
+  def date_and_time
+    "#{date_on} - " + time
   end
 end

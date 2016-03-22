@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
 
   def new
     if current_user.admin?
-      @customer = params[:customer] if params[:customer]
+      @customer = set_customer if params[:customer]
     else
       @customer = current_customer
     end
@@ -24,8 +24,9 @@ class AppointmentsController < ApplicationController
     @appointment.status = "uncompleted" unless @appointment.car
 
     if @appointment.save(context: current_user.role)
-      if @appointment.customer
-        AppointmentMailer.booked_appointment(current_user).deliver_later
+      if @appointment.user
+        AppointmentMailer.booked_appointment(@appointment.user).
+          deliver_later
       end
       redirect_to dashboard_path, flash:
         { success: "El turno ha sido solicitado.
@@ -65,5 +66,9 @@ class AppointmentsController < ApplicationController
 
   def appointment_duration
     params[:appointment][:duration] || 2
+  end
+
+  def set_customer
+    Customer.find(params[:customer])
   end
 end

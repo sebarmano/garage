@@ -14,7 +14,7 @@
   <% if @customer %>
     <%= f.input  :car_id, collection: @customer.cars,
       label: "Seleccione el vehículo",
-      selected: current_customer.cars.first,
+      selected: @customer.cars.first,
       label_method: :description,
       required: true %>
   <% end %>
