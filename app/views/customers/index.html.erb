@@ -1,9 +1,25 @@
-<h1>customers index</h1>
+<h1>Gestión de Clientes</h1>
 <div><%= render "dashboards/customer_search_form" %></div>
-<div class="user-list">
-  <ul>
-    <% @customers.each do |customer| %>
-      <li><%= customer.name  %></li>
-    <% end %>
-  </ul>
+
+<div>
+  <table class="table-minimal customers-table">
+    <thead>
+      <th>Nombre</th>
+      <th>Vehiculos</th>
+      <th>Próximo turno</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.name %></td>
+          <td><%= customer.vehicle_count %></td>
+          <td><%= customer.next_appointment %></td>
+          <td>
+            <%= link_to 'Dar turno', new_appointment_path(customer: customer.id) %>
+        </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

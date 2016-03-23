@@ -60,6 +60,7 @@ FactoryGirl.define do
 
     trait :admin do
       role :admin
+      customer nil
     end
 
     factory :confirmed_user, traits: [:confirmed]

@@ -44,4 +44,23 @@ RSpec.describe Customer, type: :model do
       expect(Customer.search(search)).to eq []
     end
   end
+
+  it "returns its number of vehicles" do
+    customer = create(:customer)
+    create(:car, customer: customer, brand: "Ford", model: "Fiesta", license:
+           "AAA000")
+    create(:car, customer: customer, brand: "Fiat", model: "Uno", license:
+           "AAA001")
+
+    expect(customer.vehicle_count).to eq(2)
+  end
+
+  it "returns next its next appoinment date and time" do
+    customer = create(:customer)
+    car = create(:car, customer: customer)
+    create(:appointment, date_on: Date.tomorrow, starts_at: "10:00 AM",
+                         car: car)
+
+    expect(customer.next_appointment).to eq("#{Date.tomorrow} - 10:00")
+  end
 end

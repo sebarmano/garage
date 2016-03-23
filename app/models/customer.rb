@@ -17,7 +17,17 @@ class Customer < ActiveRecord::Base
       where("fname ILIKE ? OR  lname ILIKE ?", "%#{search}%",
             "%#{search}%").order("lname ASC")
     else
-      all
+      all.order("lname ASC")
     end
+  end
+
+  def vehicle_count
+    cars.count
+  end
+
+  def next_appointment
+    appointment = appointments.order(date_on: :desc).first ||
+                                                     NullAppointment.new
+    appointment.date_and_time
   end
 end
