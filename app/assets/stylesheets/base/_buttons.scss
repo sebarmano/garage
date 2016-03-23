@@ -32,6 +32,28 @@
       background-color: $action-color;
     }
   }
+
+  &.btn-danger {
+    background-color: $danger-color;
+
+    &:focus {
+      background-color: shade($danger-color, 20%);
+    }
+
+    &:hover {
+      background-color: $danger-color;
+    }
+  }
+
+  &.btn-confirmation {
+    background-color: $confirmation-color;
+
+    &:focus {
+      background-color: shade($confirmation-color, 20%);
+    }
+
+    &:hover {
+      background-color: $confirmation-color;
+    }
+  }
 }
-
-

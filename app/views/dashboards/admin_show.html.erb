@@ -1,14 +1,17 @@
-<h1>This is the admin dashboard</h1>
+<h1>Panel de Control</h1>
 
-<div class="appointments-section">
-  <h2>Turnos</h2>
-  <div><%= link_to "Crear turno", new_appointment_path %></div>
-</div>
+<div class="cards">
+  <div class="card appointments-section">
+    <div class="card-header">Turnos</div>
+    <div class="card-copy"><%= link_to "Crear turno", new_appointment_path %></div>
+  </div>
 
-<div class="customers-section">
-  <h2>Clientes</h2>
-  <%= render "dashboards/customer_search_form" %>
-  <%= link_to "Ver todos", customers_path %>
-  <%= link_to "Crear cliente", new_customer_path %>
+  <div class="card customers-section">
+    <div class="card-header">Clientes</div>
+    <div class="card-copy">
+      <%= render "dashboards/customer_search_form" %>
+      <%= link_to "Ver todos", customers_path %>
+      <%= link_to "Crear cliente", new_customer_path %>
+    </div>
 </div>
 
