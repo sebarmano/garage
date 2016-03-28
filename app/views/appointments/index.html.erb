@@ -1,13 +1,14 @@
 <h1>Gestión de Turnos</h1> <% if @appointments.any? %>
   <ul class="accordion-tabs-minimal">
-    <%= render partial: "tab_header_and_content", locals: { title: "Turnos Solicitados", appointments: @appointments.booked } %>
+    <%= render "tab_header_and_content", title: "Turnos Solicitados",
+      appointments: @appointments.booked %>
 
     <li class="tab-header-and-content">
       <a href="#" class="tab-link">Turnos Confirmados</a>
       <div class="tab-content">
         <div class="confirmed-appointments">
-          <%= render partial: "appointments_table",
-            locals: { appointments: @appointments.confirmed } %>
+          <%= render "appointments_table",
+            appointments: @appointments.confirmed %>
         </div>
       </div>
     </li>
@@ -15,7 +16,8 @@
       <a href="#" class="tab-link">Turnos Cancelados</a>
       <div class="tab-content">
         <div class="cancelled-appointments">
-          <%= render partial: "appointments_table", locals: { appointments: @appointments.cancelled } %>
+          <%= render "appointments_table",
+            appointments: @appointments.cancelled %>
         </div>
       </div>
     </li>
@@ -23,8 +25,8 @@
       <a href="#" class="tab-link">Turnos Incompletos</a>
       <div class="tab-content">
         <div class="uncompleted-appointments">
-          <%= render partial: "appointments_table",
-            locals: { appointments: @appointments.uncompleted } %>
+          <%= render "appointments_table",
+            appointments: @appointments.uncompleted %>
         </div>
       </div>
     </li>
@@ -32,8 +34,7 @@
       <a href="#" class="tab-link">Todos</a>
       <div class="tab-content">
         <div class="all-appointments">
-          <%= render partial: "appointments_table",
-            locals: { appointments: @appointments } %>
+          <%= render "appointments_table",appointments: @appointments %>
         </div>
       </div>
     </li>

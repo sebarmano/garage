@@ -20,8 +20,6 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.duration = appointment_duration
-    @appointment.status = "uncompleted" unless @appointment.car
 
     if @appointment.save(context: current_user.role)
       if @appointment.user
@@ -62,10 +60,6 @@ class AppointmentsController < ApplicationController
                                         assignments_attributes:
                                           [:job_type_id, :_destroy])
 
-  end
-
-  def appointment_duration
-    params[:appointment][:duration] || 2
   end
 
   def set_customer

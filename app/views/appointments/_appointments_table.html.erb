@@ -37,11 +37,11 @@
         <td>
         <% if appointment.booked? %>
             <%= button_to "Confirmar", confirm_appointment_path(appointment),
-              method: :put %>
+              method: :put, class: "btn-confirmation" %>
         <% elsif appointment.confirmed?  %>
           <%= button_to "Cancelar", cancel_appointment_path(appointment), data:
           { confirm: "Esta seguro que desea cancelar este turno?" }, method:
-            :put %>
+            :put, class: "btn-danger" %>
         <% elsif appointment.uncompleted?  %>
             <%= link_to "Agregar cliente", new_customer_path(appointment_id:
                                                              appointment.id) %>

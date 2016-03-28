@@ -9,11 +9,14 @@ class Appointment < ActiveRecord::Base
 
   validates :car, presence: true, on: :regular
   validates :date_on, presence: true
-  validates :duration, presence: true
   validates :starts_at, presence: true
 
   accepts_nested_attributes_for :assignments,
                                 allow_destroy: true
+  before_create :set_duration
+  before_create :set_status
+
+  DEFAULT_DURATION = 2
 
   enum status: [:booked, :confirmed, :cancelled, :done, :uncompleted]
 
@@ -49,5 +52,15 @@ class Appointment < ActiveRecord::Base
 
   def date_and_time
     "#{date_on} - " + time
+  end
+
+  private
+
+  def set_duration
+    duration ||= DEFAULT_DURATION
+  end
+
+  def set_status
+    status = "uncompleted" unless car
   end
 end
