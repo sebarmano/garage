@@ -1,0 +1,18 @@
+<h1>Asignación de turnos</h1>
+<div>
+  <%= content_tag "div", data: {appointment_id: @appointment.id}, class: "appointment-to-assign" do %>
+    <p><%= @appointment.date_on %></p>
+  <% end %>
+</div>
+<div class="search-appointment-customer">
+  <h2>Buscar cliente existente</h2>
+  <%= form_tag customers_path, method: :get, class: "search-customer", remote: true  do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Nombre del cliente" %>
+    <%= submit_tag "Buscar", name: nil %>
+  <% end %>
+  <div id="customer-search-list"></div>
+</div>
+<div class="new-appointment-customer">
+  <%= render "customers/new_customer_form", customer: @customer,
+    appointment: @appointment %>
+</div>

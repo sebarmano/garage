@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "dashboards#show"
 
   resource :dashboard, only: :show
+  resources :appointment_assignments, only: [:new, :create]
   resources :appointments, only: [:index, :new, :create] do
     member do
       put :confirm

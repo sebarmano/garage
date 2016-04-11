@@ -18,20 +18,6 @@ feature "admin creates new customer" do
     expect(page).to have_css("div.flash-success")
   end
 
-  scenario "from an uncompleted appointment" do
-    create(:appointment, :uncompleted)
-    visit appointments_path
-    click_on "Turnos Incompletos"
-    first(:link, "Agregar cliente").click
-
-    expect_to_see_new_customer_form
-
-    fill_in_new_customer_form
-    click_on "Registrar cliente"
-
-    expect(page).to have_css("div.flash-success")
-  end
-
   private
 
   def expect_to_see_new_customer_form
