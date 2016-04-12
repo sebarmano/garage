@@ -38,6 +38,10 @@ class Appointment < ActiveRecord::Base
     busy_hours.flatten
   end
 
+  def self.active
+    booked + confirmed
+  end
+
   def customer_name
     customer.name
   end
@@ -52,6 +56,10 @@ class Appointment < ActiveRecord::Base
 
   def date_and_time
     "#{date_on} - " + time
+  end
+
+  def short_description
+    time + " -  " + customer.lname
   end
 
   private

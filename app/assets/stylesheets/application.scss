@@ -13,16 +13,18 @@ url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700);
 @import "pickadate/classic.date";
 @import "pickadate/classic.time";
 
-@import "refills/navbar";
 @import "layout/layout";
+@import "refills/badges";
 @import "refills/cards";
+@import "refills/navbar";
 @import "refills/table-minimal";
 @import "refills/tabs";
-@import "refills/badges";
 
 @import "appointments.scss";
 @import "appointment_assignments.scss";
 @import "devise";
+
+@import "simple_calendar";
 
 
 
