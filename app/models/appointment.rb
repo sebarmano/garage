@@ -13,8 +13,8 @@ class Appointment < ActiveRecord::Base
 
   accepts_nested_attributes_for :assignments,
                                 allow_destroy: true
-  before_create :set_duration
-  before_create :set_status
+  before_save :set_duration
+  before_save :set_status
 
   DEFAULT_DURATION = 2
 
@@ -59,16 +59,16 @@ class Appointment < ActiveRecord::Base
   end
 
   def short_description
-    time + " -  " + customer.lname
+    time + " - " + customer.lname
   end
 
   private
 
   def set_duration
-    duration ||= DEFAULT_DURATION
+    self.duration ||= DEFAULT_DURATION
   end
 
   def set_status
-    status = "uncompleted" unless car
+    self.status = "uncompleted" unless car
   end
 end

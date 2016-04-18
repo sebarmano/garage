@@ -4,7 +4,8 @@
 
   <% appointments.each do |appointment| %>
     <div>
-      <span class="badge-alert"><%= appointment.short_description %></span>
+      <%= content_tag :span, appointment.short_description, class:
+        "badge-#{appointment.status}" %>
     </div>
   <% end %>
 <% end %>

@@ -73,4 +73,12 @@ RSpec.describe Appointment, type: :model do
                                        starts_at: "10:00 AM")
     expect(appointment.date_and_time).to eq("#{Date.tomorrow} - 10:00")
   end
+
+  it "returns a short description" do
+    customer = create(:customer, fname: "John", lname: "Smith")
+    car = create(:car, customer: customer)
+    appointment = create(:appointment, car: car, starts_at: "10:00 AM")
+
+    expect(appointment.short_description).to eq("10:00 - Smith")
+  end
 end
