@@ -17,14 +17,16 @@ feature "admin sees a calendar with appointments" do
   scenario "sees active appointments short description in the calendar" do
     customer = create(:customer)
     car = create(:car, customer: customer)
-    booked_appointment = create(:appointment, :booked,
-                                              car: car,
-                                              date_on: Date.tomorrow,
-                                              starts_at: "8:00 AM")
-    confirmed_appointment = create(:appointment, :confirmed,
-                                                 car: car,
-                                                 date_on: Date.tomorrow,
-                                                 starts_at: "10:00 AM")
+    booked_appointment = create(:appointment,
+                                :booked,
+                                car: car,
+                                date_on: Date.tomorrow,
+                                starts_at: "8:00 AM")
+    confirmed_appointment = create(:appointment,
+                                   :confirmed,
+                                   car: car,
+                                   date_on: Date.tomorrow,
+                                   starts_at: "10:00 AM")
 
     visit calendar_path
 

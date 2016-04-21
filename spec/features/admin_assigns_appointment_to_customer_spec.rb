@@ -24,7 +24,7 @@ feature "admin assigns appointment to customer" do
     expect(page).to have_css("div.flash-success")
   end
 
-  scenario "by searching for an existing customer", js:true do
+  scenario "by searching for an existing customer", js: true do
     skip "Learn why appointment id is not added to the form"
     customer = create(:customer)
 
@@ -36,7 +36,6 @@ feature "admin assigns appointment to customer" do
     expect(page).to have_css("div.customer-card")
     expect(page).to have_content(customer.name)
 
-    save_and_open_page
     click_button "Dar turno"
   end
 

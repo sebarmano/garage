@@ -8,4 +8,4 @@ before_script:
   - bundle exec rake db:test:prepare
 
 # uncomment this line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+script: bundle exec xvfb-run rspec spec
