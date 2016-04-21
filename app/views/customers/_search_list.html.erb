@@ -1,7 +1,7 @@
 <% customers.each do |customer| %>
   <div class="customer-card">
     <%= form_tag appointment_assignments_path do %>
-      <p><%= customer.name %></p>
+      <p><%= "#{customer.name}" %></p>
       <%= hidden_field_tag 'appointment_id' %>
       <%= select_tag "car_id",
         options_from_collection_for_select(customer.cars, :id, :description) %>

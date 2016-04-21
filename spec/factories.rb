@@ -26,6 +26,10 @@ FactoryGirl.define do
     duration 2
     car
 
+    trait :booked do
+      status :booked
+    end
+
     trait :uncompleted do
       car nil
       status :uncompleted

@@ -1,0 +1,11 @@
+<h1>Calendario</h1>
+<%= month_calendar events: @appointments, attribute: :date_on  do |date, appointments| %>
+  <%= date.day %>
+
+  <% appointments.each do |appointment| %>
+    <div>
+      <%= content_tag :span, appointment.short_description, class:
+        "badge-#{appointment.status}" %>
+    </div>
+  <% end %>
+<% end %>
