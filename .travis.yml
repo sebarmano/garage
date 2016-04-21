@@ -9,3 +9,7 @@ before_script:
 
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec xvfb-run rspec spec
+
+addons:
+  code_climate:
+    repo_token: 2a3ceb16d4bc253eaabad9e4d4ce26cc1f290987ebf1ad5b4af3d05e846328dc
