@@ -29,6 +29,11 @@ es:
         starts_at: "Seleccione un horario"
         car: "Seleccione el vehículo"
 
+      cars:
+        brand: "Marca"
+        model: "Modelo"
+        license: "Patente"
+
       car:
         brand: "Marca"
         model: "Modelo"

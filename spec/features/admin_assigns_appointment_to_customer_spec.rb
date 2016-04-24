@@ -49,9 +49,9 @@ feature "admin assigns appointment to customer" do
     fill_in "Nombre", with: "Jose"
     fill_in "Apellido", with: "Fernandez"
     fill_in "Teléfono de contacto", with: "123456789"
-    fill_in "Brand", with: "Ford"
-    fill_in "Model", with: "Fiesta"
-    fill_in "License", with: "AAA000"
+    fill_in "Marca", with: "Ford"
+    fill_in "Modelo", with: "Fiesta"
+    fill_in "Patente", with: "AAA000"
   end
 
   def expect_to_see_customer_search_form
