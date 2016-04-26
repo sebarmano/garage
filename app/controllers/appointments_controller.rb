@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
 
   def index
     if current_user.admin?
-      @appointments = Appointment.all
+      @appointments = Appointment.includes(:customer)
     else
       @appointments = current_customer.appointments
     end

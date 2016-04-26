@@ -1,6 +1,6 @@
 <div class="simple-calendar">
   <%= link_to "Anterior", calendar.url_for_previous_view %>
-  <%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %>
+  <%= I18n.t("date.month_names")[start_date.month].capitalize %> <%= start_date.year %>
   <%= link_to "Siguiente", calendar.url_for_next_view %>
 
   <table class="table table-striped">
