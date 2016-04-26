@@ -3,7 +3,7 @@ class CalendarsController < ApplicationController
   before_action :admin_only
 
   def show
-    @appointments = Appointment.active
+    @appointments = Appointment.includes(:customer).active
   end
 
   private
