@@ -23,6 +23,22 @@ RSpec.describe Appointment, type: :model do
     end
   end
 
+  context "is expected to validate presence of assignments" do
+    it "is invalid without assignments" do
+      skip "See how to remove all assignments from an appointment"
+      appointment = build(:appointment, :without_assignments)
+
+      expect(appointment.valid?).to eq false
+    end
+
+    it "is valid with at least one assignment" do
+      assignment = create(:assignment)
+      appointment = build(:appointment, assignments: [assignment])
+
+      expect(appointment.valid?).to eq true
+    end
+  end
+
   it "has status of 'booked' when is created" do
     appointment = create(:appointment)
 

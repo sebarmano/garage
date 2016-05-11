@@ -10,6 +10,7 @@ class Appointment < ActiveRecord::Base
   validates :car, presence: true, on: :regular
   validates :date_on, presence: true
   validates :starts_at, presence: true
+  validate :presence_of_assignments
 
   accepts_nested_attributes_for :assignments,
                                 allow_destroy: true
@@ -63,6 +64,10 @@ class Appointment < ActiveRecord::Base
   end
 
   private
+
+  def presence_of_assignments
+    errors.add(:assignments, "Can't be blank") if assignments == []
+  end
 
   def set_duration
     self.duration ||= DEFAULT_DURATION

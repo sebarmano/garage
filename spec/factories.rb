@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :assignment do
-    appointment
     job_type
+    appointment
   end
 
   factory :customer do
@@ -25,6 +25,9 @@ FactoryGirl.define do
     starts_at "10:00 AM"
     duration 2
     car
+    after(:build) do |appointment|
+      appointment.assignments << build(:assignment, appointment: appointment)
+    end
 
     trait :booked do
       status :booked
@@ -41,6 +44,10 @@ FactoryGirl.define do
 
     trait :cancelled do
       status :cancelled
+    end
+
+    trait :without_assignments do
+      assignments  [] # FIXME: find a way of removing all assignments
     end
   end
 
