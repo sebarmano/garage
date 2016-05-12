@@ -11,7 +11,7 @@ feature "admin assigns appointment to customer" do
   end
 
   scenario "sees the appointment to assign in appointment assignments page" do
-    expect(current_path).to eq(new_appointment_assignment_path)
+    expect(current_path).to eq(new_appointment_completion_path)
     expect_to_see_appointment_to_assign
   end
 

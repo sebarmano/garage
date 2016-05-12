@@ -1,4 +1,4 @@
-class AppointmentAssignmentsController < ApplicationController
+class AppointmentCompletionsController < ApplicationController
   def new
     @appointment = set_appointment
     @customer = Customer.new
@@ -13,7 +13,7 @@ class AppointmentAssignmentsController < ApplicationController
       redirect_to dashboard_path, flash: { success: "El turno ha sido asignado
                                            con éxito" }
     else
-      redirect_to new_appointment_assignment_path, flash: { error: "Ha ocurrido
+      redirect_to new_appointment_completion_path, flash: { error: "Ha ocurrido
                                                             un error al intentar
                                                             asignar el turno" }
     end
