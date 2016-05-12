@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: :show
   resource :calendar, only: :show
-  resources :appointment_assignments, only: [:new, :create]
+  resources :appointment_completions, only: [:new, :create]
   resources :appointments, only: [:index, :new, :create] do
     member do
       put :confirm
