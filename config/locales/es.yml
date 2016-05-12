@@ -1,4 +1,13 @@
 es:
+  activerecord:
+    errors:
+      models:
+        appointment:
+          attributes:
+            date_on:
+              blank: Debe seleccionar una fecha
+            starts_at:
+              blank: Debe seleccionar un horario
   date:
     abbr_day_names:
       - dom

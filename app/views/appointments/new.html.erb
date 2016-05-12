@@ -1,24 +1,25 @@
 <h1>Solicitud de Turnos</h1>
-<%= simple_form_for setup_appointment(@appointment) do |f| %>
-  <%= f.input :date_on, as: :string, autofocus: true %>
-  <%= f.input :starts_at, as: :string,
-    placeholder: "Primero seleccione una fecha" %>
-  <%= f.simple_fields_for :assignments do |ff| %>
-    <div>
-      <%= ff.check_box :_destroy,
-        {checked: ff.object.persisted?}, "0", "1" %>
-      <%= ff.label :_destroy, ff.object.job_type.name %>
-      <%= ff.hidden_field :job_type_id %>
-    </div>
+<div class="new-appointment-form">
+  <%= simple_form_for setup_appointment(@appointment) do |f| %>
+    <%= f.input :date_on, as: :string, autofocus: true %>
+    <%= f.input :starts_at, as: :string,
+      placeholder: "Primero seleccione una fecha" %>
+    <%= f.simple_fields_for :assignments do |ff| %>
+      <div>
+        <%= ff.check_box :_destroy,
+          {checked: ff.object.persisted?}, "0", "1" %>
+        <%= ff.label :_destroy, ff.object.job_type.name %>
+        <%= ff.hidden_field :job_type_id %>
+      </div>
+    <% end %>
+    <% if @customer %>
+      <%= f.input  :car_id, collection: @customer.cars,
+        label: "Seleccione el vehículo",
+        selected: @customer.cars.first,
+        label_method: :description,
+        required: true %>
+    <% end %>
+    <%= f.submit "Solicitar turno", class:"submit-appointment-button" %>
   <% end %>
-  <% if @customer %>
-    <%= f.input  :car_id, collection: @customer.cars,
-      label: "Seleccione el vehículo",
-      selected: @customer.cars.first,
-      label_method: :description,
-      required: true %>
-  <% end %>
-
-  <%= f.submit "Solicitar turno", class:"submit-appointment-button" %>
-<% end %>
+</div>
 
