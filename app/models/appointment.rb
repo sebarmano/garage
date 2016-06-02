@@ -44,7 +44,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.ordered
-    order('updated_at desc')
+    order("updated_at desc")
   end
 
   def customer_name
