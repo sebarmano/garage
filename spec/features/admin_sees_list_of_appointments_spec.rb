@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "admin creates new customer" do
+feature "admin sees list of appointments" do
   scenario "with an appointment of each status" do
     admin = create(:user, :admin)
     login_as(admin, scope: :user)

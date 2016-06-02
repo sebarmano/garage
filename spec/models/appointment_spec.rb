@@ -39,13 +39,21 @@ RSpec.describe Appointment, type: :model do
     end
   end
 
+  it "returns appointments ordered by modification date" do
+    first = create(:appointment)
+    second = create(:appointment)
+    third = create(:appointment)
+
+    expect(Appointment.ordered).to eq [third, second, first]
+  end
+
   it "has status of 'booked' when is created" do
     appointment = create(:appointment)
 
     expect(appointment.booked?).to be true
   end
 
-  it "returns the list of appointments for a given date" do
+  it "returns appointments for a given date" do
     car = create(:car)
     appointment = create(:appointment, date_on: Date.tomorrow,
                                        car: car)
