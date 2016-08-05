@@ -1,0 +1,8 @@
+<h1>Ordenes de trabajo</h1>
+<ul>
+  <% @assignments.each do |assignment| %>
+    <li class="assignment">
+      <%= assignment.job %>
+    </li>
+  <% end %>
+<ul>

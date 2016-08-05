@@ -46,7 +46,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "i18n-tasks"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.3.0"
+  gem "rspec-rails", "~> 3.5"
 end
 
 group :test do
