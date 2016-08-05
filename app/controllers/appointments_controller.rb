@@ -3,9 +3,9 @@ class AppointmentsController < ApplicationController
 
   def index
     if current_user.admin?
-      @appointments = Appointment.includes(:customer)
+      @appointments = Appointment.includes(:customer).ordered
     else
-      @appointments = current_customer.appointments
+      @appointments = current_customer.appointments.ordered
     end
   end
 

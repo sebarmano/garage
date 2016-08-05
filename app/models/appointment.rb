@@ -43,6 +43,10 @@ class Appointment < ActiveRecord::Base
     booked + confirmed
   end
 
+  def self.ordered
+    order("updated_at desc")
+  end
+
   def customer_name
     customer.name
   end
