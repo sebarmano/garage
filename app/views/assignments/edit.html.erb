@@ -1,0 +1,27 @@
+<div class="assignment-details">
+  <h1>Detalles de Tarea</h1>
+  <p><%= @assignment.car %></p>
+  <p><%= @assignment.customer %></p>
+  <p><%= t(@assignment.status) %></p>
+
+  <% if @assignment.active? %>
+    <%= button_to "Comenzar", start_assignment_path(@assignment),
+                              method: :put %>
+  <% elsif @assignment.in_progress? %>
+    <%= button_to "Finalizar", complete_assignment_path(@assignment),
+                               method: :put %>
+  <% end %>
+
+  <ul class="notes">
+    <% @assignment.assignment_notes.each do |note| %>
+      <li class="note"><%= note.content %>
+    <% end %>
+  </ul>
+</div>
+<div class="notes-form">
+  <%= simple_form_for @assignment_note do |f| %>
+    <%= f.input :content, as: :text, label: "Notas" %>
+    <%= f.hidden_field :assignment_id, value: @assignment.id %>
+    <%= f.submit "Agregar nota" %>
+  <% end %>
+</div>

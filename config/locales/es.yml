@@ -1,4 +1,10 @@
 es:
+  booked: reservado
+  active: activo
+  in_progress: en curso
+  complete: completado
+  cancelled: cancelado
+
   activerecord:
     errors:
       models:

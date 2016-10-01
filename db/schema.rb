@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208151058) do
+ActiveRecord::Schema.define(version: 20160818224924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,20 @@ ActiveRecord::Schema.define(version: 20160208151058) do
   add_index "appointments", ["car_id"], name: "index_appointments_on_car_id", using: :btree
   add_index "appointments", ["job_id"], name: "index_appointments_on_job_id", using: :btree
 
+  create_table "assignment_notes", force: :cascade do |t|
+    t.text    "content",       null: false
+    t.integer "assignment_id"
+    t.string  "status"
+  end
+
+  add_index "assignment_notes", ["assignment_id"], name: "index_assignment_notes_on_assignment_id", using: :btree
+
   create_table "assignments", force: :cascade do |t|
     t.integer  "appointment_id"
     t.integer  "job_type_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "status",         default: 0, null: false
   end
 
   add_index "assignments", ["appointment_id"], name: "index_assignments_on_appointment_id", using: :btree
@@ -127,6 +136,7 @@ ActiveRecord::Schema.define(version: 20160208151058) do
 
   add_foreign_key "appointments", "cars"
   add_foreign_key "appointments", "jobs"
+  add_foreign_key "assignment_notes", "assignments"
   add_foreign_key "assignments", "appointments"
   add_foreign_key "assignments", "job_types"
   add_foreign_key "cars", "customers"

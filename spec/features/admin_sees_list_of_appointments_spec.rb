@@ -25,6 +25,8 @@ feature "admin sees list of appointments" do
                                          "INCOMPLETO")
   end
 
+  private
+
   def expect_to_see_table_with_appointment(status, appointment, badge_text)
     expect(page).to have_css("div.#{status}-appointments span", text:
                              badge_text)
