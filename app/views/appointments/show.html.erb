@@ -1,0 +1,10 @@
+<div class="appointment">
+  <%= @appointment.date_on %>
+  <ul class="assignments">
+    <% @appointment.assignments.each do |assignment| %>
+      <li class="assignment">
+        <%= assignment.job %>
+      </li>
+    <% end %>
+  </ul>
+</div>

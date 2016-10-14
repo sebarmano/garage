@@ -9,6 +9,10 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def show
+    @appointment = get_appointment
+  end
+
   def new
     if current_user.admin?
       @customer = set_customer if params[:customer]
@@ -35,20 +39,20 @@ class AppointmentsController < ApplicationController
   end
 
   def confirm
-    get_appointments.confirmed!
+    get_appointment.confirmed!
     redirect_to appointments_path, flash: { success:
                                             "El turno fue confirmado" }
   end
 
   def cancel
-    get_appointments.cancelled!
+    get_appointment.cancelled!
     redirect_to appointments_path, flash: { success:
                                             "El turno fue cancelado" }
   end
 
   private
 
-  def get_appointments
+  def get_appointment
     Appointment.find(params[:id])
   end
 
