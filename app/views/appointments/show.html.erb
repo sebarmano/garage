@@ -4,6 +4,7 @@
     <% @appointment.assignments.each do |assignment| %>
       <li class="assignment">
         <%= assignment.job %>
+        <%= link_to "Editar", edit_assignment_path(assignment) %>
       </li>
     <% end %>
   </ul>

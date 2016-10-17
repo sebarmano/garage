@@ -1,6 +1,17 @@
 require "rails_helper"
 
 feature "admin edits assignment" do
+  scenario "from the appointments details page" do
+    create_and_login_admin
+    assignment = create(:assignment)
+    appointment = create(:appointment, assignments: [assignment])
+
+    visit appointment_path(appointment)
+    first(:link, "Editar").click
+
+    expect(page).to have_current_path(edit_assignment_path(assignment))
+  end
+
   scenario "by adding notes to it" do
     create_and_login_admin
     assignment = create(:assignment)

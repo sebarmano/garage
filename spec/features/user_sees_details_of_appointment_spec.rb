@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 require "rails_helper"
 
 feature "User sees details of an appointment" do
@@ -13,13 +13,12 @@ feature "User sees details of an appointment" do
 
       visit appointments_path
       click_on "Todos"
-      first(:link, 'Ver detalles').click
+      first(:link, "Ver detalles").click
 
       expect(page).to have_current_path(appointment_path(appointment))
       expect(page).to have_css("div.appointment", text: Date.tomorrow)
       expect(page).to have_css("ul.assignments > li.assignment",
                                text: "Change tires")
-
     end
   end
 
