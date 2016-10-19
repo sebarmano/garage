@@ -6,14 +6,16 @@
 (https://codeclimate.com/github/sebarmano/garage)
 
 
-Ruby on Rails work in progress application to manage a car workshop. The main
+Ruby on Rails work in progress application to manage a car repair shop. The main
 features are:
 
 - Appointment management with booking and confirmation from an admin.
 - Customer cars and personal data regitration.
-- Email/SMS confirmation and reminders for appointmetns.
+- Email/SMS confirmation and reminders for appointments.
 - Employees management with task management based on appointments.
 - Reporting tool for jobs done, revenues, replacements inventory, etc.
+- Internationalization/localization as the app is primarily going to be used by
+  a shop in a Spanish speaking country.
 
 ## Getting Started
 
