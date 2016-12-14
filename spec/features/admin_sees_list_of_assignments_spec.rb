@@ -3,11 +3,12 @@ require "rails_helper"
 feature "admin sees list of assignments" do
   scenario "in assignments page" do
     create_and_login_admin
-    assignment = create(:assignment)
+    job = create(:job_type, name: "Change tires")
+    create(:assignment, job_type: job)
 
     visit assignments_path
 
-    expect(page).to have_css("li.assignment", text: assignment.job)
+    expect(page).to have_css("li.assignment", text: "Change tires")
   end
 
   private

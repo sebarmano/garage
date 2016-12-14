@@ -1,7 +1,7 @@
 <div class="assignment-details">
   <h1>Detalles de Tarea</h1>
-  <p><%= @assignment.car %></p>
-  <p><%= @assignment.customer %></p>
+  <p><%= @assignment.car_description %></p>
+  <p><%= @assignment.customer_name %></p>
   <p><%= t(@assignment.status) %></p>
 
   <% if @assignment.active? %>

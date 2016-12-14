@@ -1,5 +1,6 @@
 <div class="appointment">
-  <%= @appointment.date_on %>
+  <p>Fecha: <%= @appointment.date_on %></p>
+  <p>Cliente: <%= @appointment.customer_name %></p>
   <ul class="assignments">
     <% @appointment.assignments.each do |assignment| %>
       <li class="assignment">
