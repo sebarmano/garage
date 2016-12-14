@@ -17,6 +17,8 @@ feature "User sees details of an appointment" do
 
       expect(page).to have_current_path(appointment_path(appointment))
       expect(page).to have_css("div.appointment", text: Date.tomorrow)
+      expect(page).to have_css("div.appointment",
+                               text: appointment.customer_name)
       expect(page).to have_css("ul.assignments > li.assignment",
                                text: "Change tires")
     end

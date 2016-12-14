@@ -67,6 +67,10 @@ class Appointment < ActiveRecord::Base
     time + " - " + customer.lname
   end
 
+  def car_description
+    car.description
+  end
+
   private
 
   def presence_of_assignments

@@ -6,7 +6,8 @@ describe Assignment, type: :model do
   it { is_expected.to have_many :assignment_notes }
   it { is_expected.to define_enum_for(:status) }
   it { is_expected.to delegate_method(:car).to(:appointment) }
-  it { is_expected.to delegate_method(:customer).to(:appointment) }
+  it { is_expected.to delegate_method(:customer_name).to(:appointment) }
+  it { is_expected.to delegate_method(:car_description).to(:appointment) }
 
   describe "#job" do
     it "returns the name of the associated job" do
